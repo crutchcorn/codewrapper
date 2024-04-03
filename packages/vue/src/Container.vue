@@ -1,12 +1,27 @@
 <script setup lang="ts">
-import { VNodeRef } from "vue";
-import { Container as ContainerBase } from "@codewrapper/templating-base/vue";
-import { setElement } from "@codewrapper/core";
+import { onUnmounted, shallowRef } from "vue";
+// import { Container as ContainerBase } from "@codewrapper/templating-base/vue";
+import { setElement, getState } from "@codewrapper/core";
+import { EditorView } from "@codemirror/view";
 
-// const callback: VNodeRef = (el) => setElement(el as HTMLElement)
-const callback: VNodeRef = (el) => {};
+const view = shallowRef<EditorView>();
+const callback = (el: HTMLElement) => {
+  if (!el) {
+    return;
+  }
+  view.value = setElement(el as HTMLElement, getState());
+};
+
+onUnmounted(() => {
+  if (view.value) {
+    view.value.destroy();
+  }
+});
+
+defineExpose({ view });
 </script>
 
 <template>
-  <ContainerBase :ref="callback" />
+  <div :ref="callback as never" />
+  <!--  <ContainerBase :elRef="callback" />-->
 </template>
