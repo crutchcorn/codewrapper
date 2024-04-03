@@ -19,11 +19,11 @@
     "format": "eslint \"**/*.{js,jsx,ts,tsx}\" --fix"
   },
   "devDependencies": {
-    "@mitosis.template/config": "workspace:*",
     "@babel/plugin-transform-react-jsx": "^7.21.5",
     "@builder.io/eslint-plugin-mitosis": "0.0.14",
-    "@builder.io/mitosis": "0.0.103",
-    "@builder.io/mitosis-cli": "0.0.61",
+    "@builder.io/mitosis": "0.1.7",
+    "@builder.io/mitosis-cli": "0.1.7",
+    "@mitosis.template/config": "workspace:*",
     "@types/react": "^18.2.6",
     "@vitejs/plugin-react": "^4.0.0",
     "@vitejs/plugin-vue": "^4.2.1",
@@ -54,8 +54,12 @@
   },
   "typesVersions": {
     "*": {
-      "react": ["./dist/react/index.d.ts"],
-      "vue": ["./dist/vue/index.d.ts"]
+      "react": [
+        "./dist/react/index.d.ts"
+      ],
+      "vue": [
+        "./dist/vue/index.d.ts"
+      ]
     }
   }
 }

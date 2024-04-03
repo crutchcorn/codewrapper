@@ -13,6 +13,7 @@
   "scripts": {
     "dev:examples:vanillajs": "turbo run dev --filter @mitosis.template/examples-vanillajs",
     "dev:examples:react": "turbo run dev --filter @mitosis.template/examples-react",
+    "dev:examples:vue": "turbo run dev --filter @mitosis.template/examples-vue",
     "build": "turbo run build",
     "lint": "turbo run lint",
     "format": "turbo run format",

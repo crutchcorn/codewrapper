@@ -28,7 +28,6 @@
     "@mitosis.template/config": "workspace:*"
   },
   "dependencies": {
-    "@mitosis.template/core": "workspace:*",
-    "nanostores": "^0.8.1"
+    "@mitosis.template/core": "workspace:*"
   }
 }

@@ -60,12 +60,12 @@ const libraries: Array<InlineConfig> = [
       vue(),
       dts({
         tsConfigFilePath: resolve(__dirname, "../tsconfig.compiled.json"),
-        entryRoot: resolve(__dirname, "../dist/vue/vue3/src"),
+        entryRoot: resolve(__dirname, "../dist/vue/src"),
       }),
     ],
     build: {
       lib: {
-        entry: resolve(__dirname, "../dist/vue/vue3/src/index.ts"),
+        entry: resolve(__dirname, "../dist/vue/src/index.ts"),
         name: "MitosisTemplateTemplateBase",
         fileName: (format, entryName) => getFileName("vue", format),
         formats: commonFormats,
