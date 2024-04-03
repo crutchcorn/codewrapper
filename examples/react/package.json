@@ -30,6 +30,7 @@
     "vite": "^5.2.7"
   },
   "dependencies": {
+    "@codemirror/view": "^6.26.1",
     "@mitosis.template/core": "workspace:*",
     "@mitosis.template/react": "workspace:*",
     "react": "^18.2.0",

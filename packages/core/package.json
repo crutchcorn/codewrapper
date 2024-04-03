@@ -38,5 +38,9 @@
       "require": "./dist/mitosis-template-core.umd.cjs",
       "types": "./dist/index.d.ts"
     }
+  },
+  "dependencies": {
+    "@codemirror/state": "^6.4.1",
+    "codemirror": "^6.0.1"
   }
 }

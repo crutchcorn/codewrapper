@@ -45,5 +45,8 @@
       "require": "./dist/mitosis-template-react.cjs",
       "import": "./dist/mitosis-template-react.mjs"
     }
+  },
+  "dependencies": {
+    "@codemirror/view": "^6.26.1"
   }
 }
