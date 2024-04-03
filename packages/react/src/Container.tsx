@@ -1,6 +1,12 @@
 import { Container as ContainerBase } from "@mitosis.template/templating-base/react";
 import { getState, setElement } from "@mitosis.template/core";
-import { ForwardedRef, forwardRef } from "react";
+import {
+  ForwardedRef,
+  forwardRef,
+  useCallback,
+  useEffect,
+  useRef,
+} from "react";
 import type { EditorView } from "@codemirror/view";
 
 function assignRef<T>(ref: ForwardedRef<T>, value: T) {
@@ -12,10 +18,22 @@ function assignRef<T>(ref: ForwardedRef<T>, value: T) {
 }
 
 export const Container = forwardRef<EditorView>((_, ref) => {
-  const callback = (el: HTMLElement) => {
+  const viewRef = useRef<EditorView>();
+
+  const callback = useCallback((el: HTMLElement) => {
     if (!el) return;
     const view = setElement(el, getState());
     if (ref) assignRef(ref, view);
-  };
+    viewRef.current = view;
+  }, []);
+
+  useEffect(() => {
+    return () => {
+      if (viewRef.current) {
+        viewRef.current.destroy();
+      }
+    };
+  }, []);
+
   return <ContainerBase ref={callback} />;
 });
