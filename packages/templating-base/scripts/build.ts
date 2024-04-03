@@ -40,7 +40,7 @@ const libraries: Array<InlineConfig> = [
       lib: {
         entry: resolve(__dirname, "../dist/react/src/index.ts"),
         name: "MitosisTemplateTemplateBase",
-        fileName: (format, entryName) => getFileName("react", format),
+        fileName: (format, _entryName) => getFileName("react", format),
         formats: commonFormats,
       },
       outDir: resolve(__dirname, "..", baseOutDir, "react"),
@@ -67,7 +67,7 @@ const libraries: Array<InlineConfig> = [
       lib: {
         entry: resolve(__dirname, "../dist/vue/src/index.ts"),
         name: "MitosisTemplateTemplateBase",
-        fileName: (format, entryName) => getFileName("vue", format),
+        fileName: (format, _entryName) => getFileName("vue", format),
         formats: commonFormats,
       },
       outDir: resolve(__dirname, "..", baseOutDir, "vue"),

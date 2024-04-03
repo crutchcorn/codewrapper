@@ -20,7 +20,7 @@
   },
   "devDependencies": {
     "@babel/plugin-transform-react-jsx": "^7.21.5",
-    "@builder.io/eslint-plugin-mitosis": "0.0.14",
+    "@builder.io/eslint-plugin-mitosis": "0.0.15",
     "@builder.io/mitosis": "0.1.7",
     "@builder.io/mitosis-cli": "0.1.7",
     "@mitosis.template/config": "workspace:*",

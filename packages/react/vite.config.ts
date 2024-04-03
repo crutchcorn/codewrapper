@@ -31,7 +31,7 @@ export default defineConfig({
     lib: {
       entry: resolve(__dirname, "src/index.ts"),
       name: "MitosisTemplateReact",
-      fileName: (format, entryName) =>
+      fileName: (format, _entryName) =>
         getFileName("mitosis-template-react", format),
     },
     rollupOptions: {
