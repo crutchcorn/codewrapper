@@ -10,7 +10,7 @@ module.exports = () => ({
       if (!match) return code;
       return code.replace(
         regex,
-        `forwardRef<Props["${match[1]}"]>(function ${match[2]}(props: Omit<Props, "${match[1]}">`
+        `forwardRef<Props["${match[1]}"]>(function ${match[2]}(props: Omit<Props, "${match[1]}">`,
       );
     },
   },

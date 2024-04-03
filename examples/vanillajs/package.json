@@ -20,12 +20,12 @@
     "format": "eslint \"**/*.{js,jsx,ts,tsx}\" --fix"
   },
   "devDependencies": {
+    "@mitosis.template/config": "workspace:*",
     "@types/node": "^18.16.0",
+    "eslint": "^8.57.0",
     "typescript": "^5.0.2",
     "vite": "^4.3.0",
-    "vite-plugin-dts": "^2.3.0",
-    "eslint": "^8.40.0",
-    "@mitosis.template/config": "workspace:*"
+    "vite-plugin-dts": "^2.3.0"
   },
   "dependencies": {
     "@mitosis.template/core": "workspace:*"

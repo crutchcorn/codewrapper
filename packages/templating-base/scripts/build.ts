@@ -86,7 +86,7 @@ const libraries: Array<InlineConfig> = [
 Promise.all(
   libraries.map(async (lib) => {
     return await build(lib);
-  })
+  }),
 ).then(() => {
   console.log("Compiling to bundled code finished!");
 });
