@@ -27,14 +27,12 @@
     "@vitejs/plugin-react": "^4.0.0",
     "eslint": "^8.57.0",
     "typescript": "^5.0.2",
-    "vite": "^4.3.0",
-    "vite-plugin-dts": "^2.3.0"
+    "vite": "^4.3.0"
   },
   "dependencies": {
     "@mitosis.template/core": "workspace:*",
     "@mitosis.template/react": "workspace:*",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "vite-plugin-dts": "^2.3.0"
+    "react-dom": "^18.2.0"
   }
 }
