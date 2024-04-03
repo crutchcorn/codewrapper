@@ -1,26 +1,10 @@
-import {
-  EditorView,
-  PluginValue,
-  ViewPlugin,
-  ViewUpdate,
-} from "@codemirror/view";
+import { EditorView } from "@codemirror/view";
 import { customRef, ref, unref, watchSyncEffect } from "vue";
 import { StateEffect } from "@codemirror/state";
+import { docSizePlugin } from "@codewrapper/core";
 
 export const useContainerState = (initialState: string) => {
   const _value = ref(initialState);
-
-  const docSizePlugin = () =>
-    ViewPlugin.fromClass(
-      class DocSize implements PluginValue {
-        constructor(val: EditorView) {
-          _value.value = val.state.doc.toString();
-        }
-        update(update: ViewUpdate) {
-          if (update.docChanged) _value.value = update.state.doc.toString();
-        }
-      },
-    );
 
   const viewRef = ref<EditorView>();
 
@@ -57,7 +41,9 @@ export const useContainerState = (initialState: string) => {
   const callbackRef = ({ view }: { view: EditorView }) => {
     const realView = unref(view);
     const transaction = realView.state.update({
-      effects: StateEffect.appendConfig.of([docSizePlugin()]),
+      effects: StateEffect.appendConfig.of([
+        docSizePlugin((val) => (_value.value = val)),
+      ]),
     });
     realView.dispatch(transaction);
     viewRef.value = realView;

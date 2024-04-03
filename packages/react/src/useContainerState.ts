@@ -1,29 +1,10 @@
-import {
-  EditorView,
-  PluginValue,
-  ViewPlugin,
-  ViewUpdate,
-} from "@codemirror/view";
-import { useCallback, useLayoutEffect, useMemo, useRef, useState } from "react";
+import { EditorView } from "@codemirror/view";
+import { useCallback, useLayoutEffect, useRef, useState } from "react";
 import { StateEffect } from "@codemirror/state";
+import { docSizePlugin } from "@codewrapper/core";
 
 export const useContainerState = (initialState: string) => {
   const [value, _setValue] = useState<string>(initialState);
-
-  const docSizePlugin = useMemo(
-    () =>
-      ViewPlugin.fromClass(
-        class DocSize implements PluginValue {
-          constructor(val: EditorView) {
-            _setValue(val.state.doc.toString());
-          }
-          update(update: ViewUpdate) {
-            if (update.docChanged) _setValue(update.state.doc.toString());
-          }
-        },
-      ),
-    [],
-  );
 
   const [viewRef, setViewRef] = useState<EditorView>();
 
@@ -50,16 +31,15 @@ export const useContainerState = (initialState: string) => {
     }
   }, [viewRef]);
 
-  const ref = useCallback(
-    (view: EditorView) => {
-      const transaction = view.state.update({
-        effects: StateEffect.appendConfig.of([docSizePlugin]),
-      });
-      view.dispatch(transaction);
-      setViewRef(view);
-    },
-    [docSizePlugin],
-  );
+  const ref = useCallback((view: EditorView) => {
+    const transaction = view.state.update({
+      effects: StateEffect.appendConfig.of([
+        docSizePlugin((val) => _setValue(val)),
+      ]),
+    });
+    view.dispatch(transaction);
+    setViewRef(view);
+  }, []);
 
   return [value, setValue, ref] as const;
 };

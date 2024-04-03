@@ -1,4 +1,9 @@
-import { EditorView } from "@codemirror/view";
+import {
+  EditorView,
+  PluginValue,
+  ViewPlugin,
+  ViewUpdate,
+} from "@codemirror/view";
 import { Compartment, EditorState } from "@codemirror/state";
 
 export const extensions = new Compartment();
@@ -20,3 +25,15 @@ export const setElement = (
 
   return view;
 };
+
+export const docSizePlugin = (updateFn: (state: string) => void) =>
+  ViewPlugin.fromClass(
+    class DocSize implements PluginValue {
+      constructor(val: EditorView) {
+        updateFn(val.state.doc.toString());
+      }
+      update(update: ViewUpdate) {
+        if (update.docChanged) updateFn(update.state.doc.toString());
+      }
+    },
+  );
