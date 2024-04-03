@@ -4,8 +4,12 @@ const path = require("path");
 module.exports = {
   root: true,
   ...require("@codewrapper/config/eslint-preset.js"),
+  parser: "vue-eslint-parser",
   parserOptions: {
-    project: path.resolve(__dirname, "./tsconfig.lint.json"),
-    tsconfigRootDir: __dirname,
+    parser: "@typescript-eslint/parser",
+    parserOptions: {
+      project: path.resolve(__dirname, "./tsconfig.lint.json"),
+      tsconfigRootDir: __dirname,
+    },
   },
 };
