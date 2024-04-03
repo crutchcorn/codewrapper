@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Container, useContainerState } from "@mitosis.template/react";
+import { Container, useContainerState } from "@codewrapper/react";
 
 export default function App() {
   const [value, setValue, stateRef] = useContainerState(

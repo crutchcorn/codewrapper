@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import {Container} from "@mitosis.template/vue";
+import {Container} from "@codewrapper/vue";
 </script>
 
 <template>

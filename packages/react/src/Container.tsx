@@ -1,5 +1,5 @@
-import { Container as ContainerBase } from "@mitosis.template/templating-base/react";
-import { getState, setElement } from "@mitosis.template/core";
+import { Container as ContainerBase } from "@codewrapper/templating-base/react";
+import { getState, setElement } from "@codewrapper/core";
 import {
   ForwardedRef,
   forwardRef,

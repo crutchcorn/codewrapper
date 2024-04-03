@@ -1,7 +1,7 @@
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const path = require("path");
 // eslint-disable-next-line @typescript-eslint/no-var-requires
-const basePreset = require("@mitosis.template/config/eslint-preset.js");
+const basePreset = require("@codewrapper/config/eslint-preset.js");
 
 module.exports = {
     root: true,

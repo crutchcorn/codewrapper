@@ -1,5 +1,5 @@
 {
-  "extends": "@mitosis.template/config/tsconfig.json",
+  "extends": "@codewrapper/config/tsconfig.json",
   "include": ["src"],
   "references": [{ "path": "./tsconfig.node.json" }],
   "compilerOptions": {

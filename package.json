@@ -1,5 +1,5 @@
 {
-  "name": "@mitosis.template/root",
+  "name": "@codewrapper/root",
   "root": true,
   "version": "0.0.1",
   "repository": {
@@ -11,9 +11,9 @@
   },
   "homepage": "https://github.com/crutchcorn/mitosis-template#readme",
   "scripts": {
-    "dev:examples:vanillajs": "turbo run dev --filter @mitosis.template/examples-vanillajs",
-    "dev:examples:react": "turbo run dev --filter @mitosis.template/examples-react",
-    "dev:examples:vue": "turbo run dev --filter @mitosis.template/examples-vue",
+    "dev:examples:vanillajs": "turbo run dev --filter @codewrapper/examples-vanillajs",
+    "dev:examples:react": "turbo run dev --filter @codewrapper/examples-react",
+    "dev:examples:vue": "turbo run dev --filter @codewrapper/examples-vue",
     "build": "turbo run build",
     "lint": "turbo run lint",
     "format": "turbo run format",

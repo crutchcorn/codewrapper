@@ -1,7 +1,7 @@
-import { setElement } from "@mitosis.template/core";
+import { setElement } from "@codewrapper/core";
 
 const el = document.createElement("button");
 
-setElement(el);
+// setElement(el);
 
 document.body.append(el);

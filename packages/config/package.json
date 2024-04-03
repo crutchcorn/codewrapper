@@ -1,5 +1,5 @@
 {
-  "name": "@mitosis.template/config",
+  "name": "@codewrapper/config",
   "private": true,
   "version": "0.0.0",
   "scripts": {

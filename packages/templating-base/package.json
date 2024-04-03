@@ -1,5 +1,5 @@
 {
-  "name": "@mitosis.template/templating-base",
+  "name": "@codewrapper/templating-base",
   "version": "0.0.1",
   "description": "",
   "repository": {
@@ -23,7 +23,7 @@
     "@builder.io/eslint-plugin-mitosis": "0.0.15",
     "@builder.io/mitosis": "0.1.7",
     "@builder.io/mitosis-cli": "0.1.7",
-    "@mitosis.template/config": "workspace:*",
+    "@codewrapper/config": "workspace:*",
     "@types/react": "^18.2.6",
     "@vitejs/plugin-react": "^4.2.1",
     "@vitejs/plugin-vue": "^5.0.4",

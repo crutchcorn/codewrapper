@@ -1,5 +1,5 @@
 {
-  "name": "@mitosis.template/core",
+  "name": "@codewrapper/core",
   "version": "0.0.1",
   "description": "",
   "repository": {
@@ -18,7 +18,7 @@
     "format": "eslint \"**/*.{js,jsx,ts,tsx}\" --fix"
   },
   "devDependencies": {
-    "@mitosis.template/config": "workspace:*",
+    "@codewrapper/config": "workspace:*",
     "@types/node": "^18.16.0",
     "eslint": "^8.57.0",
     "typescript": "^5.4.3",

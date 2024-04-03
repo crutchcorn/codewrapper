@@ -1,5 +1,5 @@
 {
-  "name": "@mitosis.template/examples-vanillajs",
+  "name": "@codewrapper/examples-vanillajs",
   "private": true,
   "version": "0.0.1",
   "description": "",
@@ -20,13 +20,13 @@
     "format": "eslint \"**/*.{js,jsx,ts,tsx}\" --fix"
   },
   "devDependencies": {
-    "@mitosis.template/config": "workspace:*",
+    "@codewrapper/config": "workspace:*",
     "@types/node": "^18.16.0",
     "eslint": "^8.57.0",
     "typescript": "^5.4.3",
     "vite": "^5.2.7"
   },
   "dependencies": {
-    "@mitosis.template/core": "workspace:*"
+    "@codewrapper/core": "workspace:*"
   }
 }

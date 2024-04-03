@@ -47,10 +47,10 @@ importers:
       '@codemirror/view':
         specifier: ^6.26.1
         version: 6.26.1
-      '@mitosis.template/core':
+      '@codewrapper/core':
         specifier: workspace:*
         version: link:../../packages/core
-      '@mitosis.template/react':
+      '@codewrapper/react':
         specifier: workspace:*
         version: link:../../packages/react
       codemirror:
@@ -63,7 +63,7 @@ importers:
         specifier: ^18.2.0
         version: 18.2.0(react@18.2.0)
     devDependencies:
-      '@mitosis.template/config':
+      '@codewrapper/config':
         specifier: workspace:*
         version: link:../../packages/config
       '@types/node':
@@ -90,11 +90,11 @@ importers:
 
   examples/vanillajs:
     dependencies:
-      '@mitosis.template/core':
+      '@codewrapper/core':
         specifier: workspace:*
         version: link:../../packages/core
     devDependencies:
-      '@mitosis.template/config':
+      '@codewrapper/config':
         specifier: workspace:*
         version: link:../../packages/config
       '@types/node':
@@ -112,17 +112,17 @@ importers:
 
   examples/vue:
     dependencies:
-      '@mitosis.template/core':
+      '@codewrapper/core':
         specifier: workspace:*
         version: link:../../packages/core
-      '@mitosis.template/vue':
+      '@codewrapper/vue':
         specifier: workspace:*
         version: link:../../packages/vue
       vue:
         specifier: ^3.4.21
         version: 3.4.21(typescript@5.4.3)
     devDependencies:
-      '@mitosis.template/config':
+      '@codewrapper/config':
         specifier: workspace:*
         version: link:../../packages/config
       '@vitejs/plugin-vue':
@@ -152,7 +152,7 @@ importers:
       '@codemirror/view':
         specifier: ^6.26.1
         version: 6.26.1
-      '@mitosis.template/config':
+      '@codewrapper/config':
         specifier: workspace:*
         version: link:../config
       '@types/node':
@@ -183,13 +183,13 @@ importers:
       '@codemirror/view':
         specifier: ^6.26.1
         version: 6.26.1
-      '@mitosis.template/config':
+      '@codewrapper/config':
         specifier: workspace:*
         version: link:../config
-      '@mitosis.template/core':
+      '@codewrapper/core':
         specifier: workspace:*
         version: link:../core
-      '@mitosis.template/templating-base':
+      '@codewrapper/templating-base':
         specifier: workspace:*
         version: link:../templating-base
       '@types/node':
@@ -228,7 +228,7 @@ importers:
       '@builder.io/mitosis-cli':
         specifier: 0.1.7
         version: 0.1.7
-      '@mitosis.template/config':
+      '@codewrapper/config':
         specifier: workspace:*
         version: link:../config
       '@types/react':
@@ -265,13 +265,13 @@ importers:
         specifier: '>=6.0.0'
         version: 7.8.1
     devDependencies:
-      '@mitosis.template/config':
+      '@codewrapper/config':
         specifier: workspace:*
         version: link:../config
-      '@mitosis.template/core':
+      '@codewrapper/core':
         specifier: workspace:*
         version: link:../core
-      '@mitosis.template/templating-base':
+      '@codewrapper/templating-base':
         specifier: workspace:*
         version: link:../templating-base
       '@types/node':

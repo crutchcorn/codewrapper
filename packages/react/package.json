@@ -1,5 +1,5 @@
 {
-  "name": "@mitosis.template/react",
+  "name": "@codewrapper/react",
   "version": "0.0.1",
   "description": "",
   "repository": {
@@ -18,9 +18,9 @@
     "format": "eslint \"**/*.{js,jsx,ts,tsx}\" --fix"
   },
   "devDependencies": {
-    "@mitosis.template/config": "workspace:*",
-    "@mitosis.template/core": "workspace:*",
-    "@mitosis.template/templating-base": "workspace:*",
+    "@codewrapper/config": "workspace:*",
+    "@codewrapper/core": "workspace:*",
+    "@codewrapper/templating-base": "workspace:*",
     "@types/node": "^18.16.0",
     "@types/react": "^18.0.26",
     "@vitejs/plugin-react": "^4.2.1",
