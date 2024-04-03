@@ -1,43 +1,19 @@
 import * as React from "react";
-import { Container, extensions } from "@mitosis.template/react";
-import { useRef } from "react";
-import {
-  EditorView,
-  PluginValue,
-  ViewPlugin,
-  ViewUpdate,
-} from "@codemirror/view";
+import { Container, useContainerState } from "@mitosis.template/react";
 
 export default function App() {
-  const viewRef = useRef<EditorView>();
-
-  const [value, setValue] = React.useState<string>("");
-
-  const assignRef = (view: EditorView) => {
-    if (!view) return;
-    const docSizePlugin = ViewPlugin.fromClass(
-      class DocSize implements PluginValue {
-        update(update: ViewUpdate) {
-          if (update.docChanged) setValue(update.state.doc.toString());
-        }
-      },
-    );
-
-    const transaction = view.state.update({
-      changes: { from: 0, insert: "<div>Test</div>\n\nTesting" },
-      effects: extensions.reconfigure([docSizePlugin]),
-    });
-    view.dispatch(transaction);
-    viewRef.current = view;
-  };
+  const [value, setValue, stateRef] = useContainerState(
+    "<div>Test</div>\n\nTesting",
+  );
 
   return (
     <div>
-      <Container ref={assignRef} />
-      <div>
-        <h2>Value</h2>
-        <pre>{value}</pre>
-      </div>
+      <h2>Base CodeMirror Editor</h2>
+      <Container ref={stateRef} />
+      <h2>React Projected Value</h2>
+      <pre>{value}</pre>
+      <h2>React setValue Usage</h2>
+      <textarea value={value} onChange={(e) => setValue(e.target.value)} />
     </div>
   );
 }

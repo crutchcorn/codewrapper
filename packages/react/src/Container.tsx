@@ -4,8 +4,8 @@ import {
   ForwardedRef,
   forwardRef,
   useCallback,
-  useEffect,
-  useRef,
+  useLayoutEffect,
+  useState,
 } from "react";
 import type { EditorView } from "@codemirror/view";
 
@@ -18,22 +18,20 @@ function assignRef<T>(ref: ForwardedRef<T>, value: T) {
 }
 
 export const Container = forwardRef<EditorView>((_, ref) => {
-  const viewRef = useRef<EditorView>();
+  const [containerEl, setContainerEl] = useState<HTMLElement>();
 
-  const callback = useCallback((el: HTMLElement) => {
-    if (!el) return;
-    const view = setElement(el, getState());
+  useLayoutEffect(() => {
+    if (!containerEl) return;
+    const view = setElement(containerEl, getState());
     if (ref) assignRef(ref, view);
-    viewRef.current = view;
-  }, []);
-
-  useEffect(() => {
     return () => {
-      if (viewRef.current) {
-        viewRef.current.destroy();
-      }
+      view.destroy();
     };
-  }, []);
+  }, [containerEl]);
 
-  return <ContainerBase ref={callback} />;
+  return (
+    <ContainerBase
+      ref={useCallback((view: HTMLElement) => setContainerEl(view), [])}
+    />
+  );
 });
