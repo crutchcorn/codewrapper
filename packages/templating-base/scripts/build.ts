@@ -32,7 +32,7 @@ const libraries: Array<InlineConfig> = [
         jsxImportSource: "react",
       }),
       dts({
-        tsConfigFilePath: resolve(__dirname, "../tsconfig.react.json"),
+        tsconfigPath: resolve(__dirname, "../tsconfig.react.json"),
         entryRoot: resolve(__dirname, "../dist/react/src"),
       }),
     ],
@@ -59,7 +59,7 @@ const libraries: Array<InlineConfig> = [
     plugins: [
       vue(),
       dts({
-        tsConfigFilePath: resolve(__dirname, "../tsconfig.compiled.json"),
+        tsconfigPath: resolve(__dirname, "../tsconfig.compiled.json"),
         entryRoot: resolve(__dirname, "../dist/vue/src"),
       }),
     ],

@@ -22,12 +22,12 @@
     "@mitosis.template/core": "workspace:*",
     "@mitosis.template/templating-base": "workspace:*",
     "@types/node": "^18.16.0",
-    "@vitejs/plugin-vue": "^4.2.3",
+    "@vitejs/plugin-vue": "^5.0.4",
     "eslint": "^8.57.0",
-    "typescript": "^5.0.2",
-    "vite": "^4.3.0",
+    "typescript": "^5.4.3",
+    "vite": "^5.2.7",
     "vite-plugin-dts": "^3.8.1",
-    "vue": "^3.2.47"
+    "vue": "^3.4.21"
   },
   "peerDependencies": {
     "rxjs": ">=6.0.0",
