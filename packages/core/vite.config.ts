@@ -18,5 +18,8 @@ export default defineConfig({
       name: "MitosisTemplateCore",
       fileName: "mitosis-template-core",
     },
+    rollupOptions: {
+      external: ["@codemirror/state", "@codemirror/view"],
+    },
   },
 });

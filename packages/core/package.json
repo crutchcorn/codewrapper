@@ -23,7 +23,9 @@
     "eslint": "^8.57.0",
     "typescript": "^5.4.3",
     "vite": "^5.2.7",
-    "vite-plugin-dts": "^3.8.1"
+    "vite-plugin-dts": "^3.8.1",
+    "@codemirror/state": "^6.4.1",
+    "@codemirror/view": "^6.26.1"
   },
   "files": [
     "dist",
@@ -39,8 +41,8 @@
       "types": "./dist/index.d.ts"
     }
   },
-  "dependencies": {
-    "@codemirror/state": "^6.4.1",
-    "codemirror": "^6.0.1"
+  "peerDependencies": {
+    "@codemirror/state": "<=6",
+    "@codemirror/view": "<=6"
   }
 }

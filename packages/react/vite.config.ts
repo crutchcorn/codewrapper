@@ -35,7 +35,13 @@ export default defineConfig({
         getFileName("mitosis-template-react", format),
     },
     rollupOptions: {
-      external: ["react", "react-dom", "react/jsx-runtime", "rxjs"],
+      external: [
+        "react",
+        "react-dom",
+        "react/jsx-runtime",
+        "@codemirror/state",
+        "@codemirror/view",
+      ],
       output: {
         globals: {
           react: "React",

@@ -30,9 +30,12 @@
     "vite": "^5.2.7"
   },
   "dependencies": {
+    "@codemirror/lang-html": "^6.4.8",
+    "@codemirror/state": "^6.4.1",
     "@codemirror/view": "^6.26.1",
     "@mitosis.template/core": "workspace:*",
     "@mitosis.template/react": "workspace:*",
+    "codemirror": "^6.0.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   }

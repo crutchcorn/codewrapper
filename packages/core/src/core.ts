@@ -1,9 +1,11 @@
-import { basicSetup, EditorView } from "codemirror";
-import { EditorState } from "@codemirror/state";
+import { EditorView } from "@codemirror/view";
+import { Compartment, EditorState } from "@codemirror/state";
+
+export const extensions = new Compartment();
 
 export const getState = () => {
   return EditorState.create({
-    extensions: [basicSetup],
+    extensions: extensions.of([]),
   });
 };
 

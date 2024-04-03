@@ -35,7 +35,7 @@ export default defineConfig({
         getFileName("mitosis-template-vue", format),
     },
     rollupOptions: {
-      external: ["vue", "rxjs"],
+      external: ["vue", "@codemirror/state", "@codemirror/view"],
       output: {
         globals: {
           vue: "Vue",
