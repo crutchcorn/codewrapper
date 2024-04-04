@@ -1,1 +1,1 @@
-export { default as Container } from "./Container.lite";
+export { default as CodeEditor } from "./CodeEditor.lite";

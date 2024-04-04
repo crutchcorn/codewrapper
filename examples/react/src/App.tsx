@@ -1,15 +1,15 @@
 import * as React from "react";
-import { Container, useContainerState } from "@codewrapper/react";
+import { CodeEditor, useCodeEditorState } from "@codewrapper/react";
 
 export default function App() {
-  const [value, setValue, stateRef] = useContainerState(
+  const [value, setValue, stateRef] = useCodeEditorState(
     "<div>Test</div>\n\nTesting",
   );
 
   return (
     <div>
       <h2>Base CodeMirror Editor</h2>
-      <Container ref={stateRef} />
+      <CodeEditor ref={stateRef} />
       <h2>React Projected Value</h2>
       <pre>{value}</pre>
       <h2>React setValue Usage</h2>

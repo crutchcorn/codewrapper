@@ -1,7 +1,7 @@
 <script lang="ts" setup>
-import { Container, useContainerState } from "@codewrapper/vue";
+import { CodeEditor, useCodeEditorState } from "@codewrapper/vue";
 
-const { ref, value } = useContainerState("<div>Test</div>\n\nTesting");
+const { ref, value } = useCodeEditorState("<div>Test</div>\n\nTesting");
 const setValue = (e: Event) => {
   value.value = (e.target as HTMLInputElement).value;
 };
@@ -10,7 +10,7 @@ const setValue = (e: Event) => {
 <template>
   <div>
     <h2>Base CodeMirror Editor</h2>
-    <Container :ref="ref" />
+    <CodeEditor :ref="ref" />
     <h2>Vue Projected Value</h2>
     <pre>{{ value }}</pre>
     <h2>Vue setValue Usage</h2>

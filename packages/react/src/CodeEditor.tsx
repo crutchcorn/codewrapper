@@ -1,5 +1,5 @@
-import { Container as ContainerBase } from "@codewrapper/templating-base/react";
-import { getState, setElement } from "@codewrapper/core";
+import { CodeEditor as CodeEditorBase } from "@codewrapper/templating-base/react";
+import { getCodeEditorState, setCodeEditorElement } from "@codewrapper/core";
 import {
   ForwardedRef,
   forwardRef,
@@ -17,12 +17,12 @@ function assignRef<T>(ref: ForwardedRef<T>, value: T) {
   }
 }
 
-export const Container = forwardRef<EditorView>((_, ref) => {
+export const CodeEditor = forwardRef<EditorView>((_, ref) => {
   const [containerEl, setContainerEl] = useState<HTMLElement>();
 
   useLayoutEffect(() => {
     if (!containerEl) return;
-    const view = setElement(containerEl, getState());
+    const view = setCodeEditorElement(containerEl, getCodeEditorState());
     if (ref) assignRef(ref, view);
     return () => {
       view.destroy();
@@ -30,7 +30,7 @@ export const Container = forwardRef<EditorView>((_, ref) => {
   }, [containerEl]);
 
   return (
-    <ContainerBase
+    <CodeEditorBase
       ref={useCallback((view: HTMLElement) => setContainerEl(view), [])}
     />
   );

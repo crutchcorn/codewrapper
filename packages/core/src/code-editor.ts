@@ -8,15 +8,15 @@ import { Compartment, EditorState } from "@codemirror/state";
 
 export const extensions = new Compartment();
 
-export const getState = () => {
+export const getCodeEditorState = () => {
   return EditorState.create({
     extensions: extensions.of([]),
   });
 };
 
-export const setElement = (
+export const setCodeEditorElement = (
   el: HTMLElement,
-  state: ReturnType<typeof getState>,
+  state: ReturnType<typeof getCodeEditorState>,
 ) => {
   const view = new EditorView({
     state,

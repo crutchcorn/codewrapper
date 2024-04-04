@@ -1,9 +1,9 @@
 import { EditorView } from "@codemirror/view";
-import { customRef, ref, unref, watchSyncEffect } from "vue";
+import { customRef, ref, unref, VNodeRef, watchSyncEffect } from "vue";
 import { StateEffect } from "@codemirror/state";
 import { docSizePlugin } from "@codewrapper/core";
 
-export const useContainerState = (initialState: string) => {
+export const useCodeEditorState = (initialState: string) => {
   const _value = ref(initialState);
 
   const viewRef = ref<EditorView>();
@@ -38,7 +38,7 @@ export const useContainerState = (initialState: string) => {
     }
   });
 
-  const callbackRef = ({ view }: { view: EditorView }) => {
+  const callbackRef: VNodeRef = (({ view }: { view: EditorView }) => {
     const realView = unref(view);
     const transaction = realView.state.update({
       effects: StateEffect.appendConfig.of([
@@ -47,7 +47,7 @@ export const useContainerState = (initialState: string) => {
     });
     realView.dispatch(transaction);
     viewRef.value = realView;
-  };
+  }) as never;
 
   return { value, ref: callbackRef };
 };

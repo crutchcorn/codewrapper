@@ -3,7 +3,7 @@ import { useCallback, useLayoutEffect, useRef, useState } from "react";
 import { StateEffect } from "@codemirror/state";
 import { docSizePlugin } from "@codewrapper/core";
 
-export const useContainerState = (initialState: string) => {
+export const useCodeEditorState = (initialState: string) => {
   const [value, _setValue] = useState<string>(initialState);
 
   const [viewRef, setViewRef] = useState<EditorView>();
