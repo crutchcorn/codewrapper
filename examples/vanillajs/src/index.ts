@@ -1,28 +1,22 @@
-import { docSizePlugin, getCodeEditorState, setCodeEditorElement } from "@codewrapper/core";
-import { StateEffect } from "@codemirror/state";
-import { basicSetup } from "codemirror";
+import "@xterm/xterm/css/xterm.css";
+import { initTerm, PromptFn } from "./lib";
 
-const el = document.createElement("div");
-const preEl = document.createElement("pre");
+// TODO: Move to app, not library
+const onPrompt: PromptFn = (term, text) => {
+  const command = text.trim().split(" ")[0];
+  if (command === "ls") {
+    term.writeln(["a", "bunch", "of", "fake", "files"].join("\r\n"));
+    term.prompt(term);
+    return true;
+  }
+  return false;
+};
 
-const view = setCodeEditorElement(el, getCodeEditorState());
+const { term, prompt } = initTerm(onPrompt);
 
-const initialState = "<div>Test</div>\n\nTesting";
+term.writeln("Below is a simple emulated backend, try running `help`.");
+prompt(term);
 
-const transaction = view.state.update({
-  effects: StateEffect.appendConfig.of([
-    basicSetup,
-    docSizePlugin((val) => (preEl.innerText = val)),
-  ]),
-  changes: {
-    from: 0,
-    to: view.state.doc.length,
-    insert: initialState,
-  },
-});
-view.dispatch(transaction);
+const el = document.querySelector("#root") as HTMLElement;
 
-preEl.innerText = initialState;
-
-document.body.append(el);
-document.body.append(preEl);
+term.open(el);

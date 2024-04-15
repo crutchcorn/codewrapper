@@ -30,6 +30,7 @@
     "@codemirror/state": "^6.4.1",
     "@codemirror/view": "^6.26.1",
     "@codewrapper/core": "workspace:*",
-    "codemirror": "^6.0.1"
+    "codemirror": "^6.0.1",
+    "@xterm/xterm": "^5.5.0"
   }
 }
