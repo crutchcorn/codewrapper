@@ -1,21 +1,8 @@
 import { CodeEditor as CodeEditorBase } from "@codewrapper/templating-base/react";
 import { getCodeEditorState, setCodeEditorElement } from "@codewrapper/core";
-import {
-  ForwardedRef,
-  forwardRef,
-  useCallback,
-  useLayoutEffect,
-  useState,
-} from "react";
+import { forwardRef, useCallback, useLayoutEffect, useState } from "react";
 import type { EditorView } from "@codemirror/view";
-
-function assignRef<T>(ref: ForwardedRef<T>, value: T) {
-  if (typeof ref === "function") {
-    ref(value);
-  } else if (ref) {
-    ref.current = value;
-  }
-}
+import { assignRef } from "./utils";
 
 export const CodeEditor = forwardRef<EditorView>((_, ref) => {
   const [containerEl, setContainerEl] = useState<HTMLElement>();

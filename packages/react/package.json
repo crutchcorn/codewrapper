@@ -18,23 +18,25 @@
     "format": "eslint \"**/*.{js,jsx,ts,tsx}\" --fix"
   },
   "devDependencies": {
+    "@codemirror/state": "^6.4.1",
+    "@codemirror/view": "^6.26.1",
     "@codewrapper/config": "workspace:*",
     "@codewrapper/core": "workspace:*",
     "@codewrapper/templating-base": "workspace:*",
     "@types/node": "^18.16.0",
     "@types/react": "^18.0.26",
     "@vitejs/plugin-react": "^4.2.1",
+    "@xterm/xterm": "^5.5.0",
     "eslint": "^8.57.0",
     "typescript": "^5.4.3",
     "vite": "^5.2.7",
-    "vite-plugin-dts": "^3.8.1",
-    "@codemirror/state": "^6.4.1",
-    "@codemirror/view": "^6.26.1"
+    "vite-plugin-dts": "^3.8.1"
   },
   "peerDependencies": {
-    "react": "^16.8 || ^17.0 || ^18.0",
-    "@codemirror/state": "<=6",
-    "@codemirror/view": "<=6"
+    "@codemirror/state": ">=6",
+    "@codemirror/view": ">=6",
+    "@xterm/xterm": ">=5.4.0",
+    "react": "^16.8 || ^17.0 || ^18.0"
   },
   "types": "./dist/index.d.ts",
   "main": "./dist/mitosis-template-react.cjs",

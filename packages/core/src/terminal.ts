@@ -1,6 +1,6 @@
 import { Terminal } from "@xterm/xterm";
 
-type CodeBlocksTerminal = Terminal & {
+export type CodeBlocksTerminal = Terminal & {
   _initialized: boolean;
   prompt: (term: CodeBlocksTerminal) => void;
 };
@@ -52,8 +52,6 @@ export function initTerm(onPrompt: PromptFn) {
     term.prompt = () => {
       term.write("\r\n$ ");
     };
-
-    // TODO: Use a nicer default font
 
     prompt(term);
 
