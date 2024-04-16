@@ -1,0 +1,61 @@
+{
+  "name": "@mitosis.template/templating-base",
+  "version": "0.0.1",
+  "description": "",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/crutchcorn/mitosis-template.git"
+  },
+  "bugs": {
+    "url": "https://github.com/crutchcorn/mitosis-template/issues"
+  },
+  "homepage": "https://github.com/crutchcorn/mitosis-template#readme",
+  "type": "commonjs",
+  "scripts": {
+    "build": "pnpm build:mitosis && pnpm build:vite",
+    "build:mitosis": "mitosis build",
+    "build:vite": "tsx ./scripts/build.ts",
+    "lint": "eslint \"**/*.{js,jsx,ts,tsx}\"",
+    "format": "eslint \"**/*.{js,jsx,ts,tsx}\" --fix"
+  },
+  "devDependencies": {
+    "@mitosis.template/config": "workspace:*",
+    "@babel/plugin-transform-react-jsx": "^7.21.5",
+    "@builder.io/eslint-plugin-mitosis": "0.0.14",
+    "@builder.io/mitosis": "0.0.103",
+    "@builder.io/mitosis-cli": "0.0.61",
+    "@types/react": "^18.2.6",
+    "@vitejs/plugin-react": "^4.0.0",
+    "@vitejs/plugin-vue": "^4.2.1",
+    "eslint": "^8.40.0",
+    "react": "^18.2.0",
+    "tsx": "^3.12.7",
+    "vite": "^4.3.5",
+    "vite-plugin-dts": "^2.3.0",
+    "vue": "^3.2.47"
+  },
+  "files": [
+    "dist",
+    "src"
+  ],
+  "exports": {
+    "./react": {
+      "types": "./dist/react/index.d.ts",
+      "import": "./dist/react/react.mjs",
+      "require": "./dist/react/react.cjs",
+      "default": "./dist/react/react.cjs"
+    },
+    "./vue": {
+      "types": "./dist/vue/index.d.ts",
+      "import": "./dist/vue/vue.mjs",
+      "require": "./dist/vue/vue.cjs",
+      "default": "./dist/vue/vue.cjs"
+    }
+  },
+  "typesVersions": {
+    "*": {
+      "react": ["./dist/react/index.d.ts"],
+      "vue": ["./dist/vue/index.d.ts"]
+    }
+  }
+}

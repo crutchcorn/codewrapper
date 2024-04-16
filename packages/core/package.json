@@ -1,0 +1,45 @@
+{
+  "name": "@mitosis.template/core",
+  "version": "0.0.1",
+  "description": "",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/crutchcorn/mitosis-template.git"
+  },
+  "bugs": {
+    "url": "https://github.com/crutchcorn/mitosis-template/issues"
+  },
+  "homepage": "https://github.com/crutchcorn/mitosis-template#readme",
+  "type": "module",
+  "scripts": {
+    "dev": "vite build --watch",
+    "build": "tsc && vite build",
+    "lint": "eslint \"**/*.{js,jsx,ts,tsx}\"",
+    "format": "eslint \"**/*.{js,jsx,ts,tsx}\" --fix"
+  },
+  "devDependencies": {
+    "@types/node": "^18.16.0",
+    "typescript": "^5.0.2",
+    "vite": "^4.3.0",
+    "vite-plugin-dts": "^2.3.0",
+    "@mitosis.template/config": "workspace:*",
+    "eslint": "^8.40.0"
+  },
+  "dependencies": {
+    "nanostores": "^0.8.0"
+  },
+  "files": [
+    "dist",
+    "src"
+  ],
+  "main": "./dist/mitosis-template-core.umd.cjs",
+  "module": "./dist/mitosis-template-core.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/mitosis-template-core.js",
+      "require": "./dist/mitosis-template-core.umd.cjs",
+      "types": "./dist/index.d.ts"
+    }
+  }
+}

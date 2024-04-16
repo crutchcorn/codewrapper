@@ -1,0 +1,11 @@
+{
+  "extends": "@mitosis.template/config/tsconfig.json",
+  "include": ["dist"],
+  "exclude": ["dist/lit", "dist/react"],
+  "compilerOptions": {
+    "noEmit": false,
+    "allowImportingTsExtensions": true,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "extends": "@mitosis.template/config/tsconfig.json",
+  "include": ["src"],
+  "references": [{ "path": "./tsconfig.node.json" }],
+  "compilerOptions": {
+    "jsxImportSource": "react",
+    "jsx": "preserve"
+  }
+}

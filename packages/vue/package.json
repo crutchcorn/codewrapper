@@ -1,0 +1,50 @@
+{
+  "name": "@mitosis.template/vue",
+  "version": "0.0.1",
+  "description": "",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Tutour-dev/CodeEmbed.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Tutour-dev/CodeEmbed/issues"
+  },
+  "homepage": "https://github.com/Tutour-dev/CodeEmbed#readme",
+  "type": "module",
+  "scripts": {
+    "dev": "vite build --watch",
+    "build": "tsc && vite build",
+    "lint": "eslint \"**/*.{js,jsx,ts,tsx}\"",
+    "format": "eslint \"**/*.{js,jsx,ts,tsx}\" --fix"
+  },
+  "devDependencies": {
+    "@mitosis.template/config": "workspace:*",
+    "@mitosis.template/core": "workspace:*",
+    "@mitosis.template/templating-base": "workspace:*",
+    "@types/node": "^18.16.0",
+    "@vitejs/plugin-vue": "^4.2.3",
+    "eslint": "^8.40.0",
+    "typescript": "^5.0.2",
+    "vite": "^4.3.0",
+    "vite-plugin-dts": "^2.3.0",
+    "vue": "^3.2.47"
+  },
+  "peerDependencies": {
+    "rxjs": ">=6.0.0",
+    "vue": "^3"
+  },
+  "types": "./dist/index.d.ts",
+  "main": "./dist/mitosis-template-vue.cjs",
+  "module": "./dist/mitosis-template-vue.mjs",
+  "files": [
+    "dist",
+    "src"
+  ],
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "require": "./dist/mitosis-template-vue.cjs",
+      "import": "./dist/mitosis-template-vue.mjs"
+    }
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "extends": "@mitosis.template/config/tsconfig.json",
+  "include": ["src", "scripts", "config"],
+  "compilerOptions": {
+    "jsx": "preserve",
+    "jsxImportSource": "@builder.io/mitosis"
+  }
+}
