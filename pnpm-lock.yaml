@@ -177,6 +177,67 @@ importers:
         specifier: ^5.2.7
         version: 5.2.7(@types/node@18.16.0)
 
+  examples/react/full-demo:
+    dependencies:
+      '@codemirror/lang-html':
+        specifier: ^6.4.8
+        version: 6.4.8
+      '@codemirror/state':
+        specifier: ^6.4.1
+        version: 6.4.1
+      '@codemirror/view':
+        specifier: ^6.26.1
+        version: 6.26.1
+      '@codewrapper/core':
+        specifier: workspace:*
+        version: link:../../../packages/core
+      '@codewrapper/react':
+        specifier: workspace:*
+        version: link:../../../packages/react
+      '@tanstack/react-query':
+        specifier: ^5.29.2
+        version: 5.29.2(react@18.2.0)
+      '@webcontainer/api':
+        specifier: ^1.1.9
+        version: 1.1.9
+      '@xterm/xterm':
+        specifier: ^5.5.0
+        version: 5.5.0
+      codemirror:
+        specifier: ^6.0.1
+        version: 6.0.1(@lezer/common@1.2.1)
+      react:
+        specifier: ^18.2.0
+        version: 18.2.0
+      react-dom:
+        specifier: ^18.2.0
+        version: 18.2.0(react@18.2.0)
+    devDependencies:
+      '@codewrapper/config':
+        specifier: workspace:*
+        version: link:../../../packages/config
+      '@types/node':
+        specifier: ^18.16.0
+        version: 18.16.0
+      '@types/react':
+        specifier: ^18.0.26
+        version: 18.2.6
+      '@types/react-dom':
+        specifier: ^18.0.9
+        version: 18.0.9
+      '@vitejs/plugin-react':
+        specifier: ^4.2.1
+        version: 4.2.1(vite@5.2.7)
+      eslint:
+        specifier: ^8.57.0
+        version: 8.57.0
+      typescript:
+        specifier: ^5.4.3
+        version: 5.4.3
+      vite:
+        specifier: ^5.2.7
+        version: 5.2.7(@types/node@18.16.0)
+
   examples/vanillajs/basic-code-editor:
     dependencies:
       '@codemirror/state':

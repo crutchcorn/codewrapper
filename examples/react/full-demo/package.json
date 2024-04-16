@@ -1,0 +1,45 @@
+{
+  "name": "@codewrapper/examples-react-full-demo",
+  "private": true,
+  "version": "0.0.1",
+  "description": "",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/crutchcorn/codewrapper.git"
+  },
+  "bugs": {
+    "url": "https://github.com/crutchcorn/codewrapper/issues"
+  },
+  "homepage": "https://github.com/crutchcorn/codewrapper#readme",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview",
+    "lint": "eslint \"**/*.{js,jsx,ts,tsx}\"",
+    "format": "eslint \"**/*.{js,jsx,ts,tsx}\" --fix"
+  },
+  "devDependencies": {
+    "@codewrapper/config": "workspace:*",
+    "@types/node": "^18.16.0",
+    "@types/react": "^18.0.26",
+    "@types/react-dom": "^18.0.9",
+    "@vitejs/plugin-react": "^4.2.1",
+    "eslint": "^8.57.0",
+    "typescript": "^5.4.3",
+    "vite": "^5.2.7"
+  },
+  "dependencies": {
+    "@codemirror/lang-html": "^6.4.8",
+    "@codemirror/state": "^6.4.1",
+    "@codemirror/view": "^6.26.1",
+    "@codewrapper/core": "workspace:*",
+    "@codewrapper/react": "workspace:*",
+    "@tanstack/react-query": "^5.29.2",
+    "@webcontainer/api": "^1.1.9",
+    "@xterm/xterm": "^5.5.0",
+    "codemirror": "^6.0.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  }
+}
