@@ -88,6 +88,52 @@ importers:
         specifier: ^5.2.7
         version: 5.2.7(@types/node@18.16.0)
 
+  examples/react/code-execution-terminal:
+    dependencies:
+      '@codewrapper/core':
+        specifier: workspace:*
+        version: link:../../../packages/core
+      '@codewrapper/react':
+        specifier: workspace:*
+        version: link:../../../packages/react
+      '@webcontainer/api':
+        specifier: ^1.1.9
+        version: 1.1.9
+      '@xterm/xterm':
+        specifier: ^5.5.0
+        version: 5.5.0
+      react:
+        specifier: ^18.2.0
+        version: 18.2.0
+      react-dom:
+        specifier: ^18.2.0
+        version: 18.2.0(react@18.2.0)
+    devDependencies:
+      '@codewrapper/config':
+        specifier: workspace:*
+        version: link:../../../packages/config
+      '@types/node':
+        specifier: ^18.16.0
+        version: 18.16.0
+      '@types/react':
+        specifier: ^18.0.26
+        version: 18.2.6
+      '@types/react-dom':
+        specifier: ^18.0.9
+        version: 18.0.9
+      '@vitejs/plugin-react':
+        specifier: ^4.2.1
+        version: 4.2.1(vite@5.2.7)
+      eslint:
+        specifier: ^8.57.0
+        version: 8.57.0
+      typescript:
+        specifier: ^5.4.3
+        version: 5.4.3
+      vite:
+        specifier: ^5.2.7
+        version: 5.2.7(@types/node@18.16.0)
+
   examples/react/fake-term:
     dependencies:
       '@codewrapper/core':
@@ -260,6 +306,9 @@ importers:
 
   packages/core:
     dependencies:
+      '@tanstack/store':
+        specifier: ^0.3.1
+        version: 0.3.1
       '@webcontainer/api':
         specifier: ^1.1.9
         version: 1.1.9
@@ -1907,6 +1956,10 @@ packages:
     transitivePeerDependencies:
       - '@types/node'
     dev: true
+
+  /@tanstack/store@0.3.1:
+    resolution: {integrity: sha512-A49KN8SpLMWaNmZGPa9K982RQ81W+m7W6iStcQVeKeVS70JZRqkF0fDwKByREPq6qz9/kS0aQFOPQ0W6wIeU5g==}
+    dev: false
 
   /@ts-morph/common@0.20.0:
     resolution: {integrity: sha512-7uKjByfbPpwuzkstL3L5MQyuXPSKdoNG93Fmi2JoDcTf3pEP731JdRFAduRVkOs8oqxPsXKA+ScrWkdQ8t/I+Q==}

@@ -1,0 +1,9 @@
+{
+  "extends": "@codewrapper/config/tsconfig.json",
+  "compilerOptions": {
+    "jsxImportSource": "react",
+    "jsx": "preserve"
+  },
+  "include": ["src"],
+  "references": [{ "path": "./tsconfig.node.json" }]
+}
