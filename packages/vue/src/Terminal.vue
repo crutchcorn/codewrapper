@@ -1,29 +1,17 @@
 <script setup lang="ts">
-import { onUnmounted, ShallowRef, shallowRef } from "vue";
+import { onUnmounted, shallowRef } from "vue";
 // import { Terminal as TerminalBase } from "@codewrapper/templating-base/vue";
-import { initTerm, PromptFn, CodeBlocksTerminal } from "@codewrapper/core";
+import { initTerm } from "@codewrapper/core";
+import { Terminal as XTermTerminal } from "@xterm/xterm";
 
-interface TerminalProps {
-  onPrompt: PromptFn;
-}
-
-interface TerminalExpose {
-  term: CodeBlocksTerminal;
-  prompt: (term: CodeBlocksTerminal) => void;
-}
-
-const props = defineProps<TerminalProps>();
-
-const term = shallowRef<TerminalExpose["term"]>();
-const prompt = shallowRef<TerminalExpose["prompt"]>();
+const term = shallowRef<XTermTerminal>();
 const callback = (el: HTMLElement) => {
   if (!el) {
     return;
   }
-  const { term: localTerm, prompt: localPrompt } = initTerm(props.onPrompt);
+  const localTerm = initTerm();
   localTerm.open(el);
   term.value = localTerm;
-  prompt.value = localPrompt;
 };
 
 onUnmounted(() => {
@@ -32,14 +20,7 @@ onUnmounted(() => {
   }
 });
 
-const expose: {
-  [key in keyof TerminalExpose]: ShallowRef<TerminalExpose[key] | undefined>;
-} = {
-  term,
-  prompt,
-};
-
-defineExpose(expose);
+defineExpose({ term });
 </script>
 
 <template>

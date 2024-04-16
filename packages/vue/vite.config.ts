@@ -30,9 +30,8 @@ export default defineConfig({
   build: {
     lib: {
       entry: resolve(__dirname, "src/index.ts"),
-      name: "MitosisTemplateVue",
-      fileName: (format, _entryName) =>
-        getFileName("mitosis-template-vue", format),
+      name: "CodeWrapperVue",
+      fileName: (format, _entryName) => getFileName("codewrapper-vue", format),
     },
     rollupOptions: {
       external: ["vue", "@codemirror/state", "@codemirror/view"],

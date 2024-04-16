@@ -1,37 +1,34 @@
 import { Terminal } from "@xterm/xterm";
+import { FitAddon } from "@xterm/addon-fit";
 
-export type CodeBlocksTerminal = Terminal & {
-  _initialized: boolean;
-  prompt: (term: CodeBlocksTerminal) => void;
-};
-
-export type PromptFn = (term: CodeBlocksTerminal, text: string) => boolean;
-
-// Cancel wheel events from scrolling the page if the terminal has scrollback
-/*
-function preventScroll(term: Terminal) {
-  document.querySelector('.xterm').addEventListener('wheel', e => {
-    if (term.buffer.active.baseY > 0) {
-      e.preventDefault();
-    }
-  });
-}
-*/
-
-export function initTerm(onPrompt: PromptFn) {
+export function initTerm() {
   const term = new Terminal({
     cursorBlink: true,
     allowProposedApi: true,
-  }) as CodeBlocksTerminal;
+  }) as Terminal;
+
+  return term;
+}
+
+export type FakeTerminal = Terminal & {
+  _initialized: boolean;
+  prompt: () => void;
+};
+
+// Return "true" for "a command was found" or "false" for "no command was found"
+export type PromptFn = (term: FakeTerminal, text: string) => boolean;
+
+export function attachFakeTerm(_term: Terminal, onPrompt: PromptFn) {
+  const term = _term as FakeTerminal;
 
   let command = "";
 
-  function prompt(term: CodeBlocksTerminal) {
+  function prompt() {
     command = "";
     term.write("\r\n$ ");
   }
 
-  function runCommand(term: CodeBlocksTerminal, text: string) {
+  function runCommand(term: FakeTerminal, text: string) {
     const command = text.trim().split(" ")[0];
     if (command.length > 0) {
       term.writeln("");
@@ -39,7 +36,7 @@ export function initTerm(onPrompt: PromptFn) {
       if (commandFound) return;
       term.writeln(`${command}: command not found`);
     }
-    prompt(term);
+    prompt();
   }
 
   function runFakeTerminal() {
@@ -53,13 +50,13 @@ export function initTerm(onPrompt: PromptFn) {
       term.write("\r\n$ ");
     };
 
-    prompt(term);
+    prompt();
 
     term.onData((e) => {
       switch (e) {
         case "\u0003": // Ctrl+C
           term.write("^C");
-          prompt(term);
+          prompt();
           break;
         case "\r": // Enter
           runCommand(term, command);
@@ -90,5 +87,32 @@ export function initTerm(onPrompt: PromptFn) {
 
   runFakeTerminal();
 
-  return { term, prompt };
+  return prompt;
 }
+
+/**
+ * Requires access to the DOM
+ */
+export function fitTerm(term: Terminal) {
+  const fitAddon = new FitAddon();
+  term.loadAddon(fitAddon);
+  fitAddon.fit();
+
+  function resizeTerm() {
+    fitAddon.fit();
+  }
+
+  window.addEventListener("resize", resizeTerm);
+  return { cleanup: () => window.removeEventListener("resize", resizeTerm) };
+}
+
+// Cancel wheel events from scrolling the page if the terminal has scrollback
+/*
+function preventScroll(term: Terminal) {
+  document.querySelector('.xterm').addEventListener('wheel', e => {
+    if (term.buffer.active.baseY > 0) {
+      e.preventDefault();
+    }
+  });
+}
+*/

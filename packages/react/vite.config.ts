@@ -30,9 +30,9 @@ export default defineConfig({
   build: {
     lib: {
       entry: resolve(__dirname, "src/index.ts"),
-      name: "MitosisTemplateReact",
+      name: "CodeWrapperReact",
       fileName: (format, _entryName) =>
-        getFileName("mitosis-template-react", format),
+        getFileName("codewrapper-react", format),
     },
     rollupOptions: {
       external: [

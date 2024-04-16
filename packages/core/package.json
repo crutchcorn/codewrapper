@@ -4,12 +4,12 @@
   "description": "",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/crutchcorn/mitosis-template.git"
+    "url": "git+https://github.com/crutchcorn/codewrapper.git"
   },
   "bugs": {
-    "url": "https://github.com/crutchcorn/mitosis-template/issues"
+    "url": "https://github.com/crutchcorn/codewrapper/issues"
   },
-  "homepage": "https://github.com/crutchcorn/mitosis-template#readme",
+  "homepage": "https://github.com/crutchcorn/codewrapper#readme",
   "type": "module",
   "scripts": {
     "dev": "vite build --watch",
@@ -18,27 +18,27 @@
     "format": "eslint \"**/*.{js,jsx,ts,tsx}\" --fix"
   },
   "devDependencies": {
+    "@codemirror/state": "^6.4.1",
+    "@codemirror/view": "^6.26.1",
     "@codewrapper/config": "workspace:*",
     "@types/node": "^18.16.0",
+    "@xterm/xterm": "^5.5.0",
     "eslint": "^8.57.0",
     "typescript": "^5.4.3",
     "vite": "^5.2.7",
-    "vite-plugin-dts": "^3.8.1",
-    "@codemirror/state": "^6.4.1",
-    "@codemirror/view": "^6.26.1",
-    "@xterm/xterm": "^5.5.0"
+    "vite-plugin-dts": "^3.8.1"
   },
   "files": [
     "dist",
     "src"
   ],
-  "main": "./dist/mitosis-template-core.umd.cjs",
-  "module": "./dist/mitosis-template-core.js",
+  "main": "./dist/codewrapper-core.umd.cjs",
+  "module": "./dist/codewrapper-core.js",
   "types": "./dist/index.d.ts",
   "exports": {
     ".": {
-      "import": "./dist/mitosis-template-core.js",
-      "require": "./dist/mitosis-template-core.umd.cjs",
+      "import": "./dist/codewrapper-core.js",
+      "require": "./dist/codewrapper-core.umd.cjs",
       "types": "./dist/index.d.ts"
     }
   },
@@ -46,5 +46,9 @@
     "@codemirror/state": ">=6",
     "@codemirror/view": ">=6",
     "@xterm/xterm": ">=5.4.0"
+  },
+  "dependencies": {
+    "@webcontainer/api": "^1.1.9",
+    "@xterm/addon-fit": "^0.10.0"
   }
 }

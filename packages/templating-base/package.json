@@ -4,12 +4,12 @@
   "description": "",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/crutchcorn/mitosis-template.git"
+    "url": "git+https://github.com/crutchcorn/codewrapper.git"
   },
   "bugs": {
-    "url": "https://github.com/crutchcorn/mitosis-template/issues"
+    "url": "https://github.com/crutchcorn/codewrapper/issues"
   },
-  "homepage": "https://github.com/crutchcorn/mitosis-template#readme",
+  "homepage": "https://github.com/crutchcorn/codewrapper#readme",
   "type": "commonjs",
   "scripts": {
     "build": "pnpm build:mitosis && pnpm build:vite",

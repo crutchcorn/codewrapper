@@ -1,0 +1,5 @@
+{
+  "extends": "@codewrapper/config/tsconfig.json",
+  "include": ["src"],
+  "references": [{ "path": "./tsconfig.node.json" }]
+}

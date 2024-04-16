@@ -15,8 +15,8 @@ export default defineConfig({
   build: {
     lib: {
       entry: resolve(__dirname, "src/index.ts"),
-      name: "MitosisTemplateCore",
-      fileName: "mitosis-template-core",
+      name: "CodeWrapperCore",
+      fileName: "codewrapper-core",
     },
     rollupOptions: {
       external: ["@codemirror/state", "@codemirror/view"],

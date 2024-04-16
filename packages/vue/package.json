@@ -40,8 +40,8 @@
     "vue": "^3"
   },
   "types": "./dist/index.d.ts",
-  "main": "./dist/mitosis-template-vue.cjs",
-  "module": "./dist/mitosis-template-vue.mjs",
+  "main": "./dist/codewrapper-vue.cjs",
+  "module": "./dist/codewrapper-vue.mjs",
   "files": [
     "dist",
     "src"
@@ -49,8 +49,8 @@
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
-      "require": "./dist/mitosis-template-vue.cjs",
-      "import": "./dist/mitosis-template-vue.mjs"
+      "require": "./dist/codewrapper-vue.cjs",
+      "import": "./dist/codewrapper-vue.mjs"
     }
   }
 }

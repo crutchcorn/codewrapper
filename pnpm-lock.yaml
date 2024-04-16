@@ -36,7 +36,7 @@ importers:
         specifier: ^1.9.3
         version: 1.9.3
 
-  examples/react:
+  examples/react/basic-code-editor:
     dependencies:
       '@codemirror/lang-html':
         specifier: ^6.4.8
@@ -49,13 +49,10 @@ importers:
         version: 6.26.1
       '@codewrapper/core':
         specifier: workspace:*
-        version: link:../../packages/core
+        version: link:../../../packages/core
       '@codewrapper/react':
         specifier: workspace:*
-        version: link:../../packages/react
-      '@xterm/xterm':
-        specifier: ^5.5.0
-        version: 5.5.0
+        version: link:../../../packages/react
       codemirror:
         specifier: ^6.0.1
         version: 6.0.1(@lezer/common@1.2.1)
@@ -68,7 +65,7 @@ importers:
     devDependencies:
       '@codewrapper/config':
         specifier: workspace:*
-        version: link:../../packages/config
+        version: link:../../../packages/config
       '@types/node':
         specifier: ^18.16.0
         version: 18.16.0
@@ -91,7 +88,50 @@ importers:
         specifier: ^5.2.7
         version: 5.2.7(@types/node@18.16.0)
 
-  examples/vanillajs:
+  examples/react/fake-term:
+    dependencies:
+      '@codewrapper/core':
+        specifier: workspace:*
+        version: link:../../../packages/core
+      '@codewrapper/react':
+        specifier: workspace:*
+        version: link:../../../packages/react
+      '@xterm/xterm':
+        specifier: ^5.5.0
+        version: 5.5.0
+      react:
+        specifier: ^18.2.0
+        version: 18.2.0
+      react-dom:
+        specifier: ^18.2.0
+        version: 18.2.0(react@18.2.0)
+    devDependencies:
+      '@codewrapper/config':
+        specifier: workspace:*
+        version: link:../../../packages/config
+      '@types/node':
+        specifier: ^18.16.0
+        version: 18.16.0
+      '@types/react':
+        specifier: ^18.0.26
+        version: 18.2.6
+      '@types/react-dom':
+        specifier: ^18.0.9
+        version: 18.0.9
+      '@vitejs/plugin-react':
+        specifier: ^4.2.1
+        version: 4.2.1(vite@5.2.7)
+      eslint:
+        specifier: ^8.57.0
+        version: 8.57.0
+      typescript:
+        specifier: ^5.4.3
+        version: 5.4.3
+      vite:
+        specifier: ^5.2.7
+        version: 5.2.7(@types/node@18.16.0)
+
+  examples/vanillajs/basic-code-editor:
     dependencies:
       '@codemirror/state':
         specifier: ^6.4.1
@@ -101,17 +141,14 @@ importers:
         version: 6.26.1
       '@codewrapper/core':
         specifier: workspace:*
-        version: link:../../packages/core
-      '@xterm/xterm':
-        specifier: ^5.5.0
-        version: 5.5.0
+        version: link:../../../packages/core
       codemirror:
         specifier: ^6.0.1
         version: 6.0.1(@lezer/common@1.2.1)
     devDependencies:
       '@codewrapper/config':
         specifier: workspace:*
-        version: link:../../packages/config
+        version: link:../../../packages/config
       '@types/node':
         specifier: ^18.16.0
         version: 18.16.0
@@ -125,14 +162,70 @@ importers:
         specifier: ^5.2.7
         version: 5.2.7(@types/node@18.16.0)
 
-  examples/vue:
+  examples/vanillajs/fake-term:
     dependencies:
       '@codewrapper/core':
         specifier: workspace:*
-        version: link:../../packages/core
+        version: link:../../../packages/core
+      '@xterm/xterm':
+        specifier: ^5.5.0
+        version: 5.5.0
+    devDependencies:
+      '@codewrapper/config':
+        specifier: workspace:*
+        version: link:../../../packages/config
+      '@types/node':
+        specifier: ^18.16.0
+        version: 18.16.0
+      eslint:
+        specifier: ^8.57.0
+        version: 8.57.0
+      typescript:
+        specifier: ^5.4.3
+        version: 5.4.3
+      vite:
+        specifier: ^5.2.7
+        version: 5.2.7(@types/node@18.16.0)
+
+  examples/vue/basic-code-editor:
+    dependencies:
+      '@codewrapper/core':
+        specifier: workspace:*
+        version: link:../../../packages/core
       '@codewrapper/vue':
         specifier: workspace:*
-        version: link:../../packages/vue
+        version: link:../../../packages/vue
+      vue:
+        specifier: ^3.4.21
+        version: 3.4.21(typescript@5.4.3)
+    devDependencies:
+      '@codewrapper/config':
+        specifier: workspace:*
+        version: link:../../../packages/config
+      '@vitejs/plugin-vue':
+        specifier: ^5.0.4
+        version: 5.0.4(vite@5.2.7)(vue@3.4.21)
+      eslint-plugin-vue:
+        specifier: ^9.24.0
+        version: 9.24.0(eslint@8.57.0)
+      typescript:
+        specifier: ^5.4.3
+        version: 5.4.3
+      vite:
+        specifier: ^5.2.7
+        version: 5.2.7(@types/node@18.16.0)
+      vue-tsc:
+        specifier: ^2.0.7
+        version: 2.0.7(typescript@5.4.3)
+
+  examples/vue/fake-term:
+    dependencies:
+      '@codewrapper/core':
+        specifier: workspace:*
+        version: link:../../../packages/core
+      '@codewrapper/vue':
+        specifier: workspace:*
+        version: link:../../../packages/vue
       '@xterm/xterm':
         specifier: ^5.5.0
         version: 5.5.0
@@ -142,7 +235,7 @@ importers:
     devDependencies:
       '@codewrapper/config':
         specifier: workspace:*
-        version: link:../../packages/config
+        version: link:../../../packages/config
       '@vitejs/plugin-vue':
         specifier: ^5.0.4
         version: 5.0.4(vite@5.2.7)(vue@3.4.21)
@@ -166,6 +259,13 @@ importers:
         version: 5.4.3
 
   packages/core:
+    dependencies:
+      '@webcontainer/api':
+        specifier: ^1.1.9
+        version: 1.1.9
+      '@xterm/addon-fit':
+        specifier: ^0.10.0
+        version: 0.10.0(@xterm/xterm@5.5.0)
     devDependencies:
       '@codemirror/state':
         specifier: ^6.4.1
@@ -1862,12 +1962,6 @@ packages:
     resolution: {integrity: sha512-BsAaKhB+7X+H4GnSjGhJG9Qi8Tw+inU9nJDwmD5CgOmBLEI6ArdhikpLX7DjbjDRDTbqZzU2LSQNZg8WGPiSZQ==}
     dev: true
 
-  /@types/node@20.12.3:
-    resolution: {integrity: sha512-sD+ia2ubTeWrOu+YMF+MTAB7E+O7qsMqAbMfW7DG3K1URwhZ5hN1pLlRVGbf4wDFzSfikL05M17EyorS86jShw==}
-    dependencies:
-      undici-types: 5.26.5
-    dev: true
-
   /@types/parse-json@4.0.2:
     resolution: {integrity: sha512-dISoDXWWQwUquiKsyZ4Ng+HX2KsPL7LyHKHQwgGFEA3IaKac4Obd+h2a/a6waisAoepJlBcx9paWqjA8/HVjCw==}
     dev: true
@@ -1891,7 +1985,7 @@ packages:
     dependencies:
       '@types/prop-types': 15.7.5
       '@types/scheduler': 0.16.3
-      csstype: 3.1.2
+      csstype: 3.1.3
     dev: true
 
   /@types/scheduler@0.16.3:
@@ -2204,6 +2298,18 @@ packages:
 
   /@vue/shared@3.4.21:
     resolution: {integrity: sha512-PuJe7vDIi6VYSinuEbUIQgMIRZGgM8e4R+G+/dQTk0X1NEdvgvvgv7m+rfmDH1gZzyA1OjjoWskvHlfRNfQf3g==}
+
+  /@webcontainer/api@1.1.9:
+    resolution: {integrity: sha512-Sp6PV0K9D/3f8fSbCubqhfmBFH8XbngZCBOCF+aExyGqnz2etmw+KYvbQ/JxYvYX5KPaSxM+asFQwoP2RHl5cg==}
+    dev: false
+
+  /@xterm/addon-fit@0.10.0(@xterm/xterm@5.5.0):
+    resolution: {integrity: sha512-UFYkDm4HUahf2lnEyHvio51TNGiLK66mqP2JoATy7hRZeXaGMRDr00JiSF7m63vR5WKATF605yEggJKsw0JpMQ==}
+    peerDependencies:
+      '@xterm/xterm': ^5.0.0
+    dependencies:
+      '@xterm/xterm': 5.5.0
+    dev: false
 
   /@xterm/xterm@5.5.0:
     resolution: {integrity: sha512-hqJHYaQb5OptNunnyAnkHyM8aCjZ1MEIDTQu1iIbbTD/xops91NB5yq1ZK/dC2JDbVWtF23zUtl9JE2NqwT87A==}
@@ -2626,10 +2732,6 @@ packages:
     resolution: {integrity: sha512-/Tb/JcjK111nNScGob5MNtsntNM1aCNUDipB/TkwZFhyDrrE47SOx/18wF2bbjgc3ZzCSKW1T5nt5EbFoAz/Vg==}
     engines: {node: '>=4'}
     hasBin: true
-    dev: true
-
-  /csstype@3.1.2:
-    resolution: {integrity: sha512-I7K1Uu0MBPzaFKg4nI5Q7Vs2t+3gWWW648spaF+Rg7pI9ds18Ugn+lvg4SHczUdKlHI5LWBXyqfS8+DufyBsgQ==}
     dev: true
 
   /csstype@3.1.3:
@@ -3975,7 +4077,7 @@ packages:
   /parse5@3.0.3:
     resolution: {integrity: sha512-rgO9Zg5LLLkfJF9E6CCmXlSE4UVceloys8JrFqCcHloC3usd/kJCyPDwH2SOlzix2j3xaP9sUX3e8+kvkuleAA==}
     dependencies:
-      '@types/node': 20.12.3
+      '@types/node': 18.16.0
     dev: true
 
   /path-browserify@1.0.1:
@@ -4694,10 +4796,6 @@ packages:
     resolution: {integrity: sha512-T9q82TJI9e/C1TAxYvfb16xO120tMVFZrGA3f9/P4424DNu6ypK103y0GPFVa17yotwSyZW5iYXgjYHkGrJW/g==}
     engines: {node: '>=0.8.0'}
     hasBin: true
-    dev: true
-
-  /undici-types@5.26.5:
-    resolution: {integrity: sha512-JlCMO+ehdEIKqlFxk6IfVoAUVmgz7cU7zD/h9XZ0qzeosSHmUJVOzSQvvYSYWXkFXC+IfLKSIffhv0sVZup6pA==}
     dev: true
 
   /universalify@0.1.2:
