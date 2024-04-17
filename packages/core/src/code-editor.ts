@@ -26,9 +26,9 @@ export const setCodeEditorElement = (
   return view;
 };
 
-export const docSizePlugin = (updateFn: (state: string) => void) =>
+export const docUpdaterPlugin = (updateFn: (state: string) => void) =>
   ViewPlugin.fromClass(
-    class DocSize implements PluginValue {
+    class DocUpdater implements PluginValue {
       constructor(val: EditorView) {
         updateFn(val.state.doc.toString());
       }

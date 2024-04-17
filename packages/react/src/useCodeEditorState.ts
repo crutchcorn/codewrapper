@@ -1,7 +1,7 @@
 import { EditorView } from "@codemirror/view";
 import { useCallback, useLayoutEffect, useRef, useState } from "react";
 import { StateEffect } from "@codemirror/state";
-import { docSizePlugin } from "@codewrapper/core";
+import { docUpdaterPlugin } from "@codewrapper/core";
 
 export const useCodeEditorState = (initialState: string) => {
   const [value, _setValue] = useState<string>(initialState);
@@ -34,7 +34,7 @@ export const useCodeEditorState = (initialState: string) => {
   const ref = useCallback((view: EditorView) => {
     const transaction = view.state.update({
       effects: StateEffect.appendConfig.of([
-        docSizePlugin((val) => _setValue(val)),
+        docUpdaterPlugin((val) => _setValue(val)),
       ]),
     });
     view.dispatch(transaction);

@@ -1,7 +1,7 @@
 import { EditorView } from "@codemirror/view";
 import { customRef, ref, unref, VNodeRef, watchSyncEffect } from "vue";
 import { StateEffect } from "@codemirror/state";
-import { docSizePlugin } from "@codewrapper/core";
+import { docUpdaterPlugin } from "@codewrapper/core";
 
 export const useCodeEditorState = (initialState: string) => {
   const _value = ref(initialState);
@@ -42,7 +42,7 @@ export const useCodeEditorState = (initialState: string) => {
     const realView = unref(view);
     const transaction = realView.state.update({
       effects: StateEffect.appendConfig.of([
-        docSizePlugin((val) => (_value.value = val)),
+        docUpdaterPlugin((val) => (_value.value = val)),
       ]),
     });
     realView.dispatch(transaction);

@@ -3,7 +3,7 @@ import {
   CodeEditor,
   Terminal,
   useCodeExecution,
-  docSizePlugin,
+  docUpdaterPlugin,
 } from "@codewrapper/react";
 import { EditorView } from "@codemirror/view";
 import { EditorState, StateEffect } from "@codemirror/state";
@@ -11,7 +11,7 @@ import { basicSetup } from "codemirror";
 import "@xterm/xterm/css/xterm.css";
 import { files } from "./files";
 import { QueryClient, useQuery } from "@tanstack/react-query";
-import { useCallback, useMemo, useRef } from "react";
+import { useMemo, useRef } from "react";
 import { LanguageDescription, LanguageSupport } from "@codemirror/language";
 import { languages } from "@codemirror/language-data";
 import { historyField } from "@codemirror/commands";
@@ -56,7 +56,7 @@ export default function App() {
       return [
         basicSetup,
         // TODO: Rename this plugin
-        docSizePlugin((val) => {
+        docUpdaterPlugin((val) => {
           if (!dataRef.current.container) return;
           if (!dataRef.current.filePath) return;
           dataRef.current.container.fs.writeFile(dataRef.current.filePath, val);

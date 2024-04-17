@@ -1,5 +1,5 @@
 import {
-  docSizePlugin,
+  docUpdaterPlugin,
   getCodeEditorState,
   setCodeEditorElement,
 } from "@codewrapper/core";
@@ -16,7 +16,7 @@ const initialState = "<div>Test</div>\n\nTesting";
 const transaction = view.state.update({
   effects: StateEffect.appendConfig.of([
     basicSetup,
-    docSizePlugin((val) => (preEl.innerText = val)),
+    docUpdaterPlugin((val) => (preEl.innerText = val)),
   ]),
   changes: {
     from: 0,
