@@ -12,6 +12,8 @@ import "@xterm/xterm/css/xterm.css";
 import { files } from "./files";
 import { QueryClient, useQuery } from "@tanstack/react-query";
 import { useRef } from "react";
+import { LanguageDescription, LanguageSupport } from "@codemirror/language";
+import { languages } from "@codemirror/language-data";
 
 const qc = new QueryClient();
 
@@ -38,12 +40,24 @@ export default function App() {
     async function updateEditor() {
       const editorView = editorViewRef.current;
       if (!filePath || !editorView || !container) return;
+      const languageDescription = LanguageDescription.matchFilename(
+        languages,
+        // TODO: Only get filename, not path
+        filePath,
+      );
+
+      const languageSupport: null | LanguageSupport =
+        (await languageDescription?.load()) ?? null;
+
       editorView.dispatch({
         changes: {
           from: 0,
           to: editorView.state.doc.length,
           insert: (await container.fs.readFile(filePath, "utf8")) || "",
         },
+        effects: StateEffect.appendConfig.of([
+          ...(languageSupport ? [languageSupport] : []),
+        ]),
       });
     }
 
