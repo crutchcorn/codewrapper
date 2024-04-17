@@ -6,12 +6,12 @@ import {
   docSizePlugin,
 } from "@codewrapper/react";
 import { EditorView } from "@codemirror/view";
-import { StateEffect } from "@codemirror/state";
+import { EditorState, StateEffect } from "@codemirror/state";
 import { basicSetup } from "codemirror";
 import "@xterm/xterm/css/xterm.css";
 import { files } from "./files";
 import { QueryClient, useQuery } from "@tanstack/react-query";
-import { useRef } from "react";
+import { useCallback, useMemo, useRef } from "react";
 import { LanguageDescription, LanguageSupport } from "@codemirror/language";
 import { languages } from "@codemirror/language-data";
 
@@ -36,50 +36,61 @@ export default function App() {
 
   const editorViewRef = useRef<EditorView>();
 
-  React.useEffect(() => {
-    async function updateEditor() {
-      const editorView = editorViewRef.current;
-      if (!filePath || !editorView || !container) return;
-      const languageDescription = LanguageDescription.matchFilename(
-        languages,
-        // TODO: Only get filename, not path
-        filePath,
-      );
+  const getExtensions = useMemo(
+    () => async () => {
+      const languageDescription = filePath
+        ? LanguageDescription.matchFilename(
+            languages,
+            // TODO: Only get filename, not path
+            filePath,
+          )
+        : null;
 
       const languageSupport: null | LanguageSupport =
         (await languageDescription?.load()) ?? null;
 
-      editorView.dispatch({
-        changes: {
-          from: 0,
-          to: editorView.state.doc.length,
-          insert: (await container.fs.readFile(filePath, "utf8")) || "",
-        },
-        effects: StateEffect.appendConfig.of([
-          ...(languageSupport ? [languageSupport] : []),
-        ]),
-      });
-    }
-
-    updateEditor();
-  }, [filePath, container]);
-
-  const dataRef = useRef({ container, filePath });
-
-  dataRef.current = { container, filePath };
-
-  function codeEditorRef(editor: EditorView) {
-    if (!editor) return;
-    editorViewRef.current = editor;
-    const transaction = editor.state.update({
-      effects: StateEffect.appendConfig.of([
+      return [
         basicSetup,
+        // TODO: Rename this plugin
         docSizePlugin((val) => {
           if (!dataRef.current.container) return;
           if (!dataRef.current.filePath) return;
           dataRef.current.container.fs.writeFile(dataRef.current.filePath, val);
         }),
-      ]),
+        ...(languageSupport ? [languageSupport] : []),
+      ];
+    },
+    [filePath],
+  );
+
+  React.useEffect(() => {
+    async function updateEditor() {
+      const editorView = editorViewRef.current;
+      if (!filePath || !editorView || !container) return;
+
+      const extensions = await getExtensions();
+
+      editorView.setState(
+        EditorState.create({
+          doc: (await container.fs.readFile(filePath, "utf8")) || "",
+          extensions,
+        }),
+      );
+    }
+
+    updateEditor();
+  }, [filePath, container, getExtensions]);
+
+  const dataRef = useRef({ container, filePath });
+
+  dataRef.current = { container, filePath };
+
+  async function codeEditorRef(editor: EditorView) {
+    if (!editor) return;
+    editorViewRef.current = editor;
+    const extensions = await getExtensions();
+    const transaction = editor.state.update({
+      effects: StateEffect.appendConfig.of(extensions),
     });
     editor.dispatch(transaction);
   }
