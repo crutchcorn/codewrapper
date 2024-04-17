@@ -6,14 +6,14 @@ import {
   docUpdaterPlugin,
 } from "@codewrapper/react";
 import { EditorView } from "@codemirror/view";
-import { EditorState, StateEffect } from "@codemirror/state";
+import { StateEffect } from "@codemirror/state";
 import { basicSetup } from "codemirror";
 import "@xterm/xterm/css/xterm.css";
 import { files } from "./files";
 import { QueryClient, useQuery } from "@tanstack/react-query";
 import { LanguageDescription, LanguageSupport } from "@codemirror/language";
 import { languages } from "@codemirror/language-data";
-import { historyField } from "@codemirror/commands";
+import { useEditorHistory } from "./useEditorHistory";
 
 const qc = new QueryClient();
 
@@ -34,9 +34,11 @@ export default function App() {
   // If null, no file is selected
   const [filePath, setFilePath] = React.useState<string | null>(null);
 
-  const editorStateMap = React.useMemo(() => new Map<string, string>(), []);
-
   const editorViewRef = React.useRef<EditorView>();
+
+  const dataRef = React.useRef({ container, filePath });
+
+  dataRef.current = { container, filePath };
 
   // TODO: Compartment to store extensions without recalculation?
   const getExtensions = React.useMemo(
@@ -54,7 +56,6 @@ export default function App() {
 
       return [
         basicSetup,
-        // TODO: Rename this plugin
         docUpdaterPlugin((val) => {
           if (!dataRef.current.container) return;
           if (!dataRef.current.filePath) return;
@@ -66,55 +67,19 @@ export default function App() {
     [filePath],
   );
 
-  const prevFilePath = React.useRef<string>();
-
-  React.useEffect(() => {
-    async function updateEditor() {
-      const editorView = editorViewRef.current;
-      if (!filePath || !editorView || !container) return;
-
-      const extensions = await getExtensions();
-
-      if (prevFilePath.current) {
-        editorStateMap.set(
-          prevFilePath.current,
-          editorView.state.toJSON({
-            history: historyField,
-          }),
-        );
-      }
-
-      const prevEditorState = editorStateMap.get(filePath);
-
-      const docState = await container.fs.readFile(filePath, "utf8");
-
-      editorView.setState(
-        prevEditorState
-          ? EditorState.fromJSON(
-              prevEditorState,
-              {
-                extensions,
-                doc: docState,
-              },
-              {
-                history: historyField,
-              },
-            )
-          : EditorState.create({
-              doc: docState || "",
-              extensions,
-            }),
-      );
-
-      prevFilePath.current = filePath;
-    }
-
-    updateEditor();
-  }, [filePath, container, getExtensions]);
-
-  const dataRef = React.useRef({ container, filePath });
-
-  dataRef.current = { container, filePath };
+  useEditorHistory({
+    getPathValue: async () => {
+      if (!filePath) return "";
+      const res: string = (await container?.fs.readFile(
+        filePath,
+        "utf8",
+      )) as never;
+      return res ?? "";
+    },
+    getExtensions,
+    editorViewRef,
+    filePath,
+  });
 
   async function codeEditorRef(editor: EditorView) {
     if (!editor) return;
