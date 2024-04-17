@@ -11,7 +11,6 @@ import { basicSetup } from "codemirror";
 import "@xterm/xterm/css/xterm.css";
 import { files } from "./files";
 import { QueryClient, useQuery } from "@tanstack/react-query";
-import { useMemo, useRef } from "react";
 import { LanguageDescription, LanguageSupport } from "@codemirror/language";
 import { languages } from "@codemirror/language-data";
 import { historyField } from "@codemirror/commands";
@@ -35,12 +34,12 @@ export default function App() {
   // If null, no file is selected
   const [filePath, setFilePath] = React.useState<string | null>(null);
 
-  const editorStateMap = useMemo(() => new Map<string, string>(), []);
+  const editorStateMap = React.useMemo(() => new Map<string, string>(), []);
 
-  const editorViewRef = useRef<EditorView>();
+  const editorViewRef = React.useRef<EditorView>();
 
   // TODO: Compartment to store extensions without recalculation?
-  const getExtensions = useMemo(
+  const getExtensions = React.useMemo(
     () => async () => {
       const languageDescription = filePath
         ? LanguageDescription.matchFilename(
@@ -67,7 +66,7 @@ export default function App() {
     [filePath],
   );
 
-  const prevFilePath = useRef<string>();
+  const prevFilePath = React.useRef<string>();
 
   React.useEffect(() => {
     async function updateEditor() {
@@ -113,7 +112,7 @@ export default function App() {
     updateEditor();
   }, [filePath, container, getExtensions]);
 
-  const dataRef = useRef({ container, filePath });
+  const dataRef = React.useRef({ container, filePath });
 
   dataRef.current = { container, filePath };
 
