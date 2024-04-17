@@ -14,6 +14,7 @@ import { QueryClient, useQuery } from "@tanstack/react-query";
 import { useCallback, useMemo, useRef } from "react";
 import { LanguageDescription, LanguageSupport } from "@codemirror/language";
 import { languages } from "@codemirror/language-data";
+import { historyField } from "@codemirror/commands";
 
 const qc = new QueryClient();
 
@@ -34,8 +35,11 @@ export default function App() {
   // If null, no file is selected
   const [filePath, setFilePath] = React.useState<string | null>(null);
 
+  const editorStateMap = useMemo(() => new Map<string, string>(), []);
+
   const editorViewRef = useRef<EditorView>();
 
+  // TODO: Compartment to store extensions without recalculation?
   const getExtensions = useMemo(
     () => async () => {
       const languageDescription = filePath
@@ -63,6 +67,8 @@ export default function App() {
     [filePath],
   );
 
+  const prevFilePath = useRef<string>();
+
   React.useEffect(() => {
     async function updateEditor() {
       const editorView = editorViewRef.current;
@@ -70,12 +76,38 @@ export default function App() {
 
       const extensions = await getExtensions();
 
+      if (prevFilePath.current) {
+        editorStateMap.set(
+          prevFilePath.current,
+          editorView.state.toJSON({
+            history: historyField,
+          }),
+        );
+      }
+
+      const prevEditorState = editorStateMap.get(filePath);
+
+      const docState = await container.fs.readFile(filePath, "utf8");
+
       editorView.setState(
-        EditorState.create({
-          doc: (await container.fs.readFile(filePath, "utf8")) || "",
-          extensions,
-        }),
+        prevEditorState
+          ? EditorState.fromJSON(
+              prevEditorState,
+              {
+                extensions,
+                doc: docState,
+              },
+              {
+                history: historyField,
+              },
+            )
+          : EditorState.create({
+              doc: docState || "",
+              extensions,
+            }),
       );
+
+      prevFilePath.current = filePath;
     }
 
     updateEditor();

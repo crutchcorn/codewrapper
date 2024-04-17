@@ -179,6 +179,9 @@ importers:
 
   examples/react/full-demo:
     dependencies:
+      '@codemirror/commands':
+        specifier: ^6.3.3
+        version: 6.3.3
       '@codemirror/lang-html':
         specifier: ^6.4.8
         version: 6.4.8
