@@ -5,7 +5,7 @@ export function initTerm() {
   const term = new Terminal({
     cursorBlink: true,
     allowProposedApi: true,
-  }) as Terminal;
+  });
 
   return term;
 }
