@@ -30,7 +30,7 @@ export async function startShellAndAttachToTerminal(
     },
   });
 
-  shellProcess.output.pipeTo(
+  void shellProcess.output.pipeTo(
     new WritableStream({
       write(data) {
         terminal.write(data);
@@ -41,7 +41,7 @@ export async function startShellAndAttachToTerminal(
   const input = shellProcess.input.getWriter();
 
   terminal.onData((data) => {
-    input.write(data);
+    void input.write(data);
   });
 
   return shellProcess;

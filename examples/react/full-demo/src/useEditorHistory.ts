@@ -39,6 +39,7 @@ export const useEditorHistory = ({
       if (prevFilePath.current) {
         editorStateMap.set(
           prevFilePath.current,
+          // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
           editorView.state.toJSON({
             history: historyField,
           }),
@@ -70,6 +71,6 @@ export const useEditorHistory = ({
       prevFilePath.current = filePath;
     }
 
-    updateEditor();
+    void updateEditor();
   }, [filePath, getExtensions]);
 };

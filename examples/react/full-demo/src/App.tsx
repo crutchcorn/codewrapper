@@ -59,7 +59,7 @@ export default function App() {
         docUpdaterPlugin((val) => {
           if (!dataRef.current.container) return;
           if (!dataRef.current.filePath) return;
-          dataRef.current.container.fs.writeFile(dataRef.current.filePath, val);
+          void dataRef.current.container.fs.writeFile(dataRef.current.filePath, val);
         }),
         ...(languageSupport ? [languageSupport] : []),
       ];
@@ -105,6 +105,7 @@ export default function App() {
       <div style={{ flexBasis: "50%" }}>
         <div style={{ display: "flex", flexDirection: "row" }}>
           <div style={{ flexBasis: "50%" }}>
+            {/* eslint-disable-next-line @typescript-eslint/no-misused-promises */}
             <CodeEditor ref={codeEditorRef} />
           </div>
           <div style={{ flexBasis: "50%" }}>

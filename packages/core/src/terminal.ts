@@ -64,7 +64,7 @@ export function attachFakeTerm(_term: Terminal, onPrompt: PromptFn) {
           break;
         case "\u007F": // Backspace (DEL)
           // Do not delete the prompt
-          // eslint-disable-next-line @typescript-eslint/no-explicit-any
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any,@typescript-eslint/no-unsafe-member-access
           if ((term as any)._core.buffer.x > 2) {
             term.write("\b \b");
             if (command.length > 0) {
