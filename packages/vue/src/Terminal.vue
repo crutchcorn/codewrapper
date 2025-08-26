@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { onUnmounted, shallowRef } from "vue";
-// import { Terminal as TerminalBase } from "@codewrapper/templating-base/vue";
 import { initTerm } from "@codewrapper/core";
 import { Terminal as XTermTerminal } from "@xterm/xterm";
 
@@ -25,5 +24,4 @@ defineExpose({ term });
 
 <template>
   <div :ref="callback as never" />
-  <!--  <TerminalBase :elRef="callback" />-->
 </template>

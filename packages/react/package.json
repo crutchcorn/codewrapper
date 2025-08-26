@@ -21,7 +21,6 @@
     "@codemirror/view": "^6.26.1",
     "@codewrapper/config": "workspace:*",
     "@codewrapper/core": "workspace:*",
-    "@codewrapper/templating-base": "workspace:*",
     "@types/node": "^18.16.0",
     "@types/react": "^19.1.11",
     "@vitejs/plugin-react": "^5.0.1",

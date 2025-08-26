@@ -1,11 +1,10 @@
-import { Terminal as TerminalBase } from "@codewrapper/templating-base/react";
 import { initTerm } from "@codewrapper/core";
 import { forwardRef, useCallback, useLayoutEffect, useState } from "react";
 import { assignRef } from "./utils";
 import { Terminal as XTermTerminal } from "@xterm/xterm";
 
 export const Terminal = forwardRef<XTermTerminal>((_, ref) => {
-  const [containerEl, setContainerEl] = useState<HTMLElement>();
+  const [containerEl, setContainerEl] = useState<HTMLDivElement>();
 
   useLayoutEffect(() => {
     if (!containerEl) return;
@@ -18,8 +17,8 @@ export const Terminal = forwardRef<XTermTerminal>((_, ref) => {
   }, [containerEl]);
 
   return (
-    <TerminalBase
-      ref={useCallback((view: HTMLElement) => setContainerEl(view), [])}
+    <div
+      ref={useCallback((view: HTMLDivElement) => setContainerEl(view), [])}
     />
   );
 });

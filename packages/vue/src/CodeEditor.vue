@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { onUnmounted, shallowRef } from "vue";
-// import { CodeEditor as CodeEditorBase } from "@codewrapper/templating-base/vue";
 import { setCodeEditorElement, getCodeEditorState } from "@codewrapper/core";
 import { EditorView } from "@codemirror/view";
 
@@ -23,5 +22,4 @@ defineExpose({ view });
 
 <template>
   <div :ref="callback as never" />
-  <!--  <CodeEditorBase :elRef="callback" />-->
 </template>

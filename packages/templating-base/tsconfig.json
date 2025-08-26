@@ -1,8 +1,0 @@
-{
-  "extends": "@codewrapper/config/tsconfig.json",
-  "include": ["src", "scripts", "config"],
-  "compilerOptions": {
-    "jsx": "preserve",
-    "jsxImportSource": "@builder.io/mitosis"
-  }
-}
