@@ -16,7 +16,7 @@
     "dev:examples:vue": "turbo run dev --filter @codewrapper/examples-vue",
     "build": "turbo run build",
     "lint": "turbo run lint",
-    "format": "turbo run format",
+    "format": "prettier --ignore-unknown . --write",
     "prepare": "husky install"
   },
   "devDependencies": {

@@ -68,7 +68,7 @@ export function useCodeExecution(files: FileSystemTree) {
       };
     }
 
-    attachTerm();
+    void attachTerm();
     return () => cleanupFn.current?.();
   }, [data, terminal]);
 

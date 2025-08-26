@@ -14,8 +14,7 @@
   "scripts": {
     "dev": "vite build --watch",
     "build": "tsc && vite build",
-    "lint": "eslint \"**/*.{js,jsx,ts,tsx}\"",
-    "format": "eslint \"**/*.{js,jsx,ts,tsx}\" --fix"
+    "lint": "eslint \"**/*.{js,jsx,ts,tsx}\""
   },
   "devDependencies": {
     "@codemirror/state": "^6.4.1",
