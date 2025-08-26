@@ -1,7 +1,6 @@
-import * as React from "react";
+import { MutableRefObject, useEffect, useMemo, useRef } from "react";
 import { historyField } from "@codemirror/commands";
 import { EditorState, Extension } from "@codemirror/state";
-import { MutableRefObject } from "react";
 import { EditorView } from "@codemirror/view";
 
 interface UseEditorHistoryProps {
@@ -25,11 +24,11 @@ export const useEditorHistory = ({
   getExtensions,
   editorViewRef,
 }: UseEditorHistoryProps) => {
-  const editorStateMap = React.useMemo(() => new Map<string, string>(), []);
+  const editorStateMap = useMemo(() => new Map<string, string>(), []);
 
-  const prevFilePath = React.useRef<string>();
+  const prevFilePath = useRef(undefined as undefined | string);
 
-  React.useEffect(() => {
+  useEffect(() => {
     async function updateEditor() {
       const editorView = editorViewRef.current;
       if (!filePath || !editorView) return;

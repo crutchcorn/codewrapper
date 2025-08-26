@@ -7,9 +7,8 @@ import {
   startShellAndAttachToTerminal,
 } from "@codewrapper/core";
 import { FileSystemTree, WebContainer } from "@webcontainer/api";
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { Terminal as XTermTerminal } from "@xterm/xterm";
-import * as React from "react";
 
 const qc = new QueryClient({
   defaultOptions: {
@@ -26,7 +25,7 @@ const qc = new QueryClient({
 const noopStore = new Store<{ port: number; url: string } | null>(null);
 
 export function useCodeExecution(files: FileSystemTree) {
-  const containerRef = useRef<WebContainer>();
+  const containerRef = useRef(undefined as undefined | WebContainer);
   const { data } = useQuery(
     {
       queryKey: ["web_container"],

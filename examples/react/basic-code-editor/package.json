@@ -21,8 +21,8 @@
   "devDependencies": {
     "@codewrapper/config": "workspace:*",
     "@types/node": "^18.16.0",
-    "@types/react": "^18.0.26",
-    "@types/react-dom": "^18.0.9",
+    "@types/react": "^19.1.11",
+    "@types/react-dom": "^19.1.7",
     "@vitejs/plugin-react": "^5.0.1",
     "eslint": "^9.34.0",
     "eslint-plugin-react-hooks": "^5.2.0",
@@ -37,7 +37,7 @@
     "@codewrapper/core": "workspace:*",
     "@codewrapper/react": "workspace:*",
     "codemirror": "^6.0.1",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react": "^19.1.1",
+    "react-dom": "^19.1.1"
   }
 }

@@ -1,4 +1,4 @@
-import * as React from "react";
+import { useState, useRef, useMemo } from "react";
 import {
   CodeEditor,
   Terminal,
@@ -32,16 +32,16 @@ export default function App() {
   );
 
   // If null, no file is selected
-  const [filePath, setFilePath] = React.useState<string | null>(null);
+  const [filePath, setFilePath] = useState<string | null>(null);
 
-  const editorViewRef = React.useRef<EditorView>();
+  const editorViewRef = useRef(undefined as undefined | EditorView);
 
-  const dataRef = React.useRef({ container, filePath });
+  const dataRef = useRef({ container, filePath });
 
   dataRef.current = { container, filePath };
 
   // TODO: Compartment to store extensions without recalculation?
-  const getExtensions = React.useMemo(
+  const getExtensions = useMemo(
     () => async () => {
       const languageDescription = filePath
         ? LanguageDescription.matchFilename(
@@ -59,7 +59,10 @@ export default function App() {
         docUpdaterPlugin((val) => {
           if (!dataRef.current.container) return;
           if (!dataRef.current.filePath) return;
-          void dataRef.current.container.fs.writeFile(dataRef.current.filePath, val);
+          void dataRef.current.container.fs.writeFile(
+            dataRef.current.filePath,
+            val,
+          );
         }),
         ...(languageSupport ? [languageSupport] : []),
       ];
@@ -105,8 +108,7 @@ export default function App() {
       <div style={{ flexBasis: "50%" }}>
         <div style={{ display: "flex", flexDirection: "row" }}>
           <div style={{ flexBasis: "50%" }}>
-            {/* eslint-disable-next-line @typescript-eslint/no-misused-promises */}
-            <CodeEditor ref={codeEditorRef} />
+            <CodeEditor ref={codeEditorRef as never} />
           </div>
           <div style={{ flexBasis: "50%" }}>
             {iframeUrl && <iframe src={iframeUrl} />}
