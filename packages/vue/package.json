@@ -23,13 +23,13 @@
     "@codewrapper/core": "workspace:*",
     "@codewrapper/templating-base": "workspace:*",
     "@types/node": "^18.16.0",
-    "@vitejs/plugin-vue": "^5.0.4",
+    "@vitejs/plugin-vue": "^6.0.1",
     "@xterm/xterm": "^5.5.0",
     "eslint": "^9.34.0",
     "eslint-plugin-vue": "^10.4.0",
     "typescript": "^5.4.3",
-    "vite": "^5.2.7",
-    "vite-plugin-dts": "^3.8.1",
+    "vite": "^7.1.3",
+    "vite-plugin-dts": "^4.5.4",
     "vue": "^3.4.21"
   },
   "peerDependencies": {
