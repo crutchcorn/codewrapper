@@ -1,45 +1,19 @@
-import { defineConfig } from "vite";
-import dts from "vite-plugin-dts";
-import vue from "@vitejs/plugin-vue";
-import { resolve } from "path";
-import { dirname } from "path";
-import { fileURLToPath } from "url";
+import { defineConfig, mergeConfig } from 'vite'
+import { tanstackViteConfig } from '@tanstack/vite-config'
+import vue from '@vitejs/plugin-vue'
 
-const __dirname = dirname(fileURLToPath(import.meta.url));
-
-const getFileName = (prefix: string, format: string) => {
-  switch (format) {
-    case "es":
-    case "esm":
-    case "module":
-      return `${prefix}.mjs`;
-    case "cjs":
-    case "commonjs":
-    default:
-      return `${prefix}.cjs`;
-  }
-};
-
-export default defineConfig({
-  plugins: [
-    vue(),
-    dts({
-      entryRoot: resolve(__dirname, "./src"),
-    }),
-  ],
-  build: {
-    lib: {
-      entry: resolve(__dirname, "src/index.ts"),
-      name: "CodeWrapperVue",
-      fileName: (format, _entryName) => getFileName("codewrapper-vue", format),
-    },
-    rollupOptions: {
-      external: ["vue", "@codemirror/state", "@codemirror/view"],
-      output: {
-        globals: {
-          vue: "Vue",
-        },
-      },
-    },
+const config = defineConfig({
+  plugins: [vue()],
+  esbuild: {
+    jsxFactory: 'h',
+    jsxFragment: 'Fragment',
   },
-});
+})
+
+export default mergeConfig(
+  config,
+  tanstackViteConfig({
+    entry: './src/index.ts',
+    srcDir: './src',
+  }),
+)

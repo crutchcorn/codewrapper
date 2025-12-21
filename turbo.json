@@ -20,6 +20,12 @@
     },
     "lint": {
       "outputs": []
+    },
+    "lint:package": {
+      "dependsOn": [
+        "^build"
+      ],
+      "outputs": []
     }
   }
 }
