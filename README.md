@@ -1,5 +1,7 @@
 # CodeWrapper
 
+![A screenshot of a terminal, file list, and code editor](./assets/screenie.png)
+
 A modular, framework-agnostic library for building interactive code editors and terminals in the browser. Built on top of [CodeMirror](https://codemirror.net/) for code editing and [xterm.js](https://xtermjs.org/) for terminal emulation, with optional [WebContainers](https://webcontainers.io/) integration for in-browser code execution.
 
 ## Features
