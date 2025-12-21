@@ -8,12 +8,13 @@ import {
 import { EditorView } from "@codemirror/view";
 import { StateEffect } from "@codemirror/state";
 import { basicSetup } from "codemirror";
-import "@xterm/xterm/css/xterm.css";
 import { files } from "./files";
 import { QueryClient, useQuery } from "@tanstack/react-query";
 import { LanguageDescription, LanguageSupport } from "@codemirror/language";
 import { languages } from "@codemirror/language-data";
 import { useEditorHistory } from "./useEditorHistory";
+import "@xterm/xterm/css/xterm.css";
+import styles from "./App.module.css";
 
 const qc = new QueryClient();
 
@@ -95,27 +96,34 @@ export default function App() {
   }
 
   return (
-    <div style={{ display: "flex", flexDirection: "column" }}>
-      <div style={{ flexBasis: "20%", display: "flex", flexDirection: "row" }}>
+    <div className={styles.container}>
+      <div className={styles.fileList}>
         {fileList?.map((file) => {
           return (
-            <p key={file} onClick={() => setFilePath(file)}>
+            <p
+              key={file}
+              onClick={() => setFilePath(file)}
+              className={`${styles.fileTab} ${filePath === file ? styles.fileTabActive : ""}`}
+            >
               {file}
             </p>
           );
         })}
       </div>
-      <div style={{ flexBasis: "50%" }}>
-        <div style={{ display: "flex", flexDirection: "row" }}>
-          <div style={{ flexBasis: "50%" }}>
-            <CodeEditor ref={codeEditorRef as never} />
-          </div>
-          <div style={{ flexBasis: "50%" }}>
-            {iframeUrl && <iframe src={iframeUrl} />}
-          </div>
+      <div className={styles.mainContent}>
+        <div className={styles.editorPane}>
+          <CodeEditor ref={codeEditorRef as never} />
+        </div>
+        <div className={styles.previewPane}>
+          <div className={styles.previewHeader}>Preview</div>
+          {iframeUrl ? (
+            <iframe src={iframeUrl} className={styles.iframe} />
+          ) : (
+            <div className={styles.emptyState}>Loading preview...</div>
+          )}
         </div>
       </div>
-      <div style={{ flexBasis: "30%" }}>
+      <div className={styles.terminalPane}>
         <Terminal ref={terminalRef} />
       </div>
     </div>
